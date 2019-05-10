@@ -26,6 +26,4 @@ const PhotoDay = (props) => {
     )
 }
 
-
-
 export default PhotoDay;
