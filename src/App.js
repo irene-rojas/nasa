@@ -8,20 +8,21 @@ function App() {
     const [photoDay, setPhotoDay] = useState([]);
     const [neo, setNeo] = useState([]);
 
+    // API calls
     useEffect(() => {
+        // photo of day
         axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API}`)
         .then(res => {
             setPhotoDay(res.data);
-            // console.log(res.data);
+            console.log(res.data);
         });
-    }, []);
-
-    useEffect(() => {
+        // near-earth objects
         axios.get(`https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${process.env.REACT_APP_NASA_API}`)
-            .then(res => {
-                setNeo(res.data);
-                console.log(res.data);
-            })
+        .then(res => {
+            setNeo(res.data);
+            console.log(res.data);
+        });
+        // [] tells it to run just once
     }, []);
 
 
