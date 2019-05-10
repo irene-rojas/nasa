@@ -7,15 +7,6 @@ function App() {
 
     const [photoDay, setPhotoDay] = useState([]);
 
-    // useEffect(() => {
-    //     // this code returns data
-    //     axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API}`)
-    //     .then(res => {
-    //         const result = res.data;
-    //         console.log(result);
-    //     });
-    // }, []);
-
     useEffect(() => {
         axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API}`)
         .then(res => {
@@ -28,13 +19,13 @@ function App() {
   return (
     <div className="App">
 
-    <PhotoDay 
-        copyright={photoDay.copyright}
-        date={photoDay.date}
-        explanation={photoDay.explanation}
-        img={photoDay.hdurl}
-        title={photoDay.title}
-        />
+        <PhotoDay 
+            copyright={photoDay.copyright}
+            date={photoDay.date}
+            explanation={photoDay.explanation}
+            img={photoDay.hdurl}
+            title={photoDay.title}
+            />
 
     </div>
   );
