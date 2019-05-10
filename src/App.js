@@ -26,8 +26,8 @@ function App() {
             // endpoint testing
             console.log(res.data.near_earth_objects[0].is_potentially_hazardous_asteroid);
         });
-        // [] tells it to run just once
     }, []);
+    // [] tells it to run just once
 
 
   return (
