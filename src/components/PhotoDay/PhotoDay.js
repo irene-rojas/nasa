@@ -5,7 +5,7 @@ const PhotoDay = (props) => {
     return (
         <div className="photoInfo">
 
-            <h1>Irene Astronomy Picture of the Day</h1>
+            <h1>Astronomy Picture of the Day</h1>
             <br/>
             Date: {props.date}
             <br/>
