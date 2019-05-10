@@ -7,7 +7,7 @@ const PhotoDay = (props) => {
 
             <h1>Irene Astronomy Picture of the Day</h1>
             <br/>
-            {props.date}
+            Date: {props.date}
             <br/>
             <h3>{props.title}</h3>
             <br/>
