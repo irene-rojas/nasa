@@ -4,6 +4,8 @@ const NearEarth = (props) => {
     return (
         <div className="nearEarthInfo">
 
+
+
         </div>
     )
 }

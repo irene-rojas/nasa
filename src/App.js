@@ -31,13 +31,18 @@ function App() {
 
         <h1>Visual interpretations of NASA Open APIs</h1>
 
-        <PhotoDay 
+        {/* <PhotoDay 
             copyright={photoDay.copyright}
             date={photoDay.date}
             explanation={photoDay.explanation}
             img={photoDay.hdurl}
             title={photoDay.title}
-        />
+        /> */}
+
+        {/* only return data for first two array items */}
+        {/* .slice(0,2) */}
+
+        
 
     </div>
   );
