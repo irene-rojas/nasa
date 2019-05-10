@@ -35,14 +35,15 @@ function App() {
 
         <h1>Visual interpretations of NASA Open APIs</h1>
 
-        {/* <PhotoDay 
+        <PhotoDay 
             copyright={photoDay.copyright}
             date={photoDay.date}
             explanation={photoDay.explanation}
             img={photoDay.hdurl}
             title={photoDay.title}
-        /> */}
+        />
 
+        <h1>Near-Earth Objects</h1>
         {neo.map((object, index) => {
             return (
                 <NearEarth 
