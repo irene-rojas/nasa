@@ -47,7 +47,7 @@ function App() {
         {neo.map((object, index) => {
             return (
                 <NearEarth 
-                    key={index}
+                    key={object.designation}
                     name={object.name}
                     magnitude={object.absolute_magnitude_h}
                     hazardous={object.is_potentially_hazardous_asteroid}
