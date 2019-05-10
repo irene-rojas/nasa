@@ -28,13 +28,15 @@ function App() {
   return (
     <div className="App">
 
-        {/* <PhotoDay 
+        <h1>Visual interpretations of NASA Open APIs</h1>
+
+        <PhotoDay 
             copyright={photoDay.copyright}
             date={photoDay.date}
             explanation={photoDay.explanation}
             img={photoDay.hdurl}
             title={photoDay.title}
-            /> */}
+        />
 
     </div>
   );
