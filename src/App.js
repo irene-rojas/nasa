@@ -21,8 +21,8 @@ function App() {
         axios.get(`https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${process.env.REACT_APP_NASA_API}`)
         .then(res => {
             // only save first two items in array
-            setNeo(res.data.near_earth_objects.slice(0,2));
-            console.log(res.data.near_earth_objects.slice(0,2));
+            setNeo(res.data.near_earth_objects.slice(0,3));
+            console.log(res.data.near_earth_objects.slice(0,3));
             // endpoint testing
             console.log(res.data.near_earth_objects[0].is_potentially_hazardous_asteroid);
         });
@@ -55,7 +55,7 @@ function App() {
             {neo.map((object, index) => {
                 return (
                     <NearEarth 
-                        key={index}
+                        key={object.designation}
                         name={object.name}
                         magnitude={object.absolute_magnitude_h}
                         hazardous={object.is_potentially_hazardous_asteroid}
