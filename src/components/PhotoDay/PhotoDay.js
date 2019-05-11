@@ -18,7 +18,7 @@ const PhotoDay = (props) => {
             {props.explanation}
             <br/>
             <br/>
-            <a href="https://apod.nasa.gov/apod/astropix.html">Office NASA APOD Page</a>
+            <a href="https://apod.nasa.gov/apod/astropix.html" target="_blank" rel="noopener noreferrer">Office NASA APOD Page</a>
             <br/>
             <a href="https://apod.nasa.gov/apod/archivepix.html" target="_blank" rel="noopener noreferrer">Archive</a>
         </div>
