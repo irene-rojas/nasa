@@ -33,7 +33,7 @@ function App() {
   return (
     <div className="App">
 
-        <div  className="header">
+        <div className="header">
             <h1>Visual Presentations of NASA Open APIs</h1>
         </div>
 
@@ -51,7 +51,7 @@ function App() {
         <br/>
 
         <div className="nearEarthDiv">
-            <h1>Near-Earth Objects</h1>
+            <h1 className="neoTitle">Near-Earth Objects</h1>
             {neo.map((object, index) => {
                 return (
                     <div className={`neoDiv${index}`} key={object.designation}>
