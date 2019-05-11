@@ -6,7 +6,7 @@ const NearEarth = (props) => {
         <div className="nearEarthInfo">
 
             <h3>Name: {props.name}</h3>
-            
+
             Hazardous: {props.hazardous}
             <br/>
             Absolute magnitude: {props.magnitude}

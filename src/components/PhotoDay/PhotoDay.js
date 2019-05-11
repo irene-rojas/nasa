@@ -6,7 +6,6 @@ const PhotoDay = (props) => {
         <div className="photoInfo">
 
             <h1>Astronomy Picture of the Day</h1>
-            <br/>
             Date: {props.date}
             <br/>
             <h3>{props.title}</h3>
