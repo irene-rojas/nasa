@@ -6,24 +6,32 @@ const NearEarth = (props) => {
         <div className="nearEarthInfo">
 
             <h3>Name: {props.name}</h3>
-            
+
             Hazardous: {props.hazardous}
             <br/>
             Absolute magnitude: {props.magnitude}
             <br/>
-            JPL URL: <a href={props.jplUrl}>{props.jplUrl}</a>
             <br/>
-            Estimated diameter (max): {props.diameterMilesMax} miles
+            Estimated diameter (Miles)
             <br/>
-            Estimated diameter (min): {props.diameterMilesMin} miles 
+            (Max): {props.diameterMilesMax} miles
             <br/>
-            Estimated diameter (max): {props.diameterKiloMax} kilometers
+            (Min): {props.diameterMilesMin} miles 
             <br/>
-            Estimated diameter (min): {props.diameterKiloMin} kilometers
+            <br/>
+            Estimated diameter (Kilometers)
+            <br/>
+            (Max): {props.diameterKiloMax} kilometers
+            <br/>
+            (Min): {props.diameterKiloMin} kilometers
+            <br/>
             <br/>
             First observed: {props.firstDate}
             <br/>
             Last observed: {props.lastDate}
+            <br/>
+            <br/>
+            JPL URL: <a href={props.jplUrl} target="_blank" rel="noopener noreferrer">{props.jplUrl}</a>
 
         </div>
     )

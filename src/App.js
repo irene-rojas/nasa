@@ -21,8 +21,8 @@ function App() {
         axios.get(`https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${process.env.REACT_APP_NASA_API}`)
         .then(res => {
             // only save first two items in array
-            setNeo(res.data.near_earth_objects.slice(0,2));
-            console.log(res.data.near_earth_objects.slice(0,2));
+            setNeo(res.data.near_earth_objects.slice(0,3));
+            console.log(res.data.near_earth_objects.slice(0,3));
             // endpoint testing
             console.log(res.data.near_earth_objects[0].is_potentially_hazardous_asteroid);
         });
@@ -33,35 +33,45 @@ function App() {
   return (
     <div className="App">
 
-        <h1>Visual interpretations of NASA Open APIs</h1>
+        <div className="header">
+            <h1>Visual Presentations of NASA Open APIs</h1>
+        </div>
 
-        <PhotoDay 
-            copyright={photoDay.copyright}
-            date={photoDay.date}
-            explanation={photoDay.explanation}
-            img={photoDay.hdurl}
-            title={photoDay.title}
-        />
+        <div className="photoDayDiv">
+            <PhotoDay 
+                copyright={photoDay.copyright}
+                date={photoDay.date}
+                explanation={photoDay.explanation}
+                img={photoDay.hdurl}
+                title={photoDay.title}
+            />
+        </div>
 
-        <h1>Near-Earth Objects</h1>
-        {neo.map((object, index) => {
-            return (
-                <NearEarth 
-                    key={object.designation}
-                    name={object.name}
-                    magnitude={object.absolute_magnitude_h}
-                    hazardous={object.is_potentially_hazardous_asteroid}
-                    jplUrl={object.nasa_jpl_url}
-                    diameterMilesMax={object.estimated_diameter.miles.estimated_diameter_max}
-                    diameterMilesMin={object.estimated_diameter.miles.estimated_diameter_min}
-                    diameterKiloMax={object.estimated_diameter.kilometers.estimated_diameter_max}
-                    diameterKiloMin={object.estimated_diameter.kilometers.estimated_diameter_min}
-                    firstDate={object.orbital_data.first_observation_date}
-                    lastDate={object.orbital_data.last_observation_date}
-                />
-            )
-        })}
-        
+        <br/>
+        <br/>
+
+        <div className="nearEarthDiv">
+            <h1 className="neoTitle">Near-Earth Objects</h1>
+            {neo.map((object, index) => {
+                return (
+                    <div className={`neoDiv${index}`} key={object.designation}>
+                        <NearEarth 
+                            key={object.designation}
+                            name={object.name}
+                            magnitude={object.absolute_magnitude_h}
+                            hazardous={object.is_potentially_hazardous_asteroid}
+                            jplUrl={object.nasa_jpl_url}
+                            diameterMilesMax={object.estimated_diameter.miles.estimated_diameter_max}
+                            diameterMilesMin={object.estimated_diameter.miles.estimated_diameter_min}
+                            diameterKiloMax={object.estimated_diameter.kilometers.estimated_diameter_max}
+                            diameterKiloMin={object.estimated_diameter.kilometers.estimated_diameter_min}
+                            firstDate={object.orbital_data.first_observation_date}
+                            lastDate={object.orbital_data.last_observation_date}
+                        />
+                    </div>
+                )
+            })}
+        </div>
 
     </div>
   );
