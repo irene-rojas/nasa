@@ -34,7 +34,7 @@ function App() {
     <div className="App">
 
         <div className="header">
-            <h1>Visual Presentations of NASA Open APIs</h1>
+            <h1>Exploring the NASA Open API Universe</h1>
         </div>
 
         <div className="photoDayDiv">
