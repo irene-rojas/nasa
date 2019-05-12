@@ -59,7 +59,7 @@ function App() {
                             key={object.designation}
                             name={object.name}
                             magnitude={object.absolute_magnitude_h}
-                            hazardous={object.is_potentially_hazardous_asteroid}
+                            hazardous={object.is_potentially_hazardous_asteroid.toString()}
                             jplUrl={object.nasa_jpl_url}
                             diameterMilesMax={object.estimated_diameter.miles.estimated_diameter_max}
                             diameterMilesMin={object.estimated_diameter.miles.estimated_diameter_min}
