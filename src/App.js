@@ -48,6 +48,7 @@ function App() {
         </div>
 
         <br/>
+        {/* in NearEarth, also works: hazardous={object.is_potentially_hazardous_asteroid ? "true" : "false"} */}
         <br/>
 
         <div className="nearEarthDiv">
