@@ -11,8 +11,8 @@ function App() {
     // near earth objects
     const [neo, setNeo] = useState([]);
     // image search
-    const [data, setData] = useState([]);
     const [query, setQuery] = useState("");
+    const [data, setData] = useState([]);
 
     // API calls
     useEffect(() => {
