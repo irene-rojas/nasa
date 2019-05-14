@@ -6,38 +6,42 @@ import axios from 'axios';
 
 function App() {
 
+    // photo of day
     const [photoDay, setPhotoDay] = useState([]);
+    // near earth objects
     const [neo, setNeo] = useState([]);
-    const [search, setSearch] = useState([]);
+    // image search
+    const [query, setQuery] = useState([]);
 
     // API calls
-    useEffect(() => {
-        // photo of day
-        axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API}`)
-        .then(res => {
-            setPhotoDay(res.data);
-            // console.log(res.data);
-        });
-        // near-earth objects
-        axios.get(`https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${process.env.REACT_APP_NASA_API}`)
-        .then(res => {
-            // only save first two items in array
-            setNeo(res.data.near_earth_objects.slice(0,3));
-            console.log(res.data.near_earth_objects.slice(0,3));
-            // endpoint testing
-            console.log(res.data.near_earth_objects[0].is_potentially_hazardous_asteroid);
-        });
-        // event.preventDefault();
-        axios.get(`https://images-api.nasa.gov/search?q=mars`)
-        .then(res => {
-            setSearch(res.data);
-            console.log(res.data.collection.items.slice(0,6));
-        });
-
-    }, []);
+    // useEffect(() => {
+    //     // photo of day
+    //     axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API}`)
+    //     .then(res => {
+    //         setPhotoDay(res.data);
+    //         // console.log(res.data);
+    //     });
+    //     // near-earth objects
+    //     axios.get(`https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${process.env.REACT_APP_NASA_API}`)
+    //     .then(res => {
+    //         // only save first two items in array
+    //         setNeo(res.data.near_earth_objects.slice(0,3));
+    //         console.log(res.data.near_earth_objects.slice(0,3));
+    //     });
+    // }, []);
     // [] tells it to run just once
 
-
+    useEffect(() => {
+        const fetchData = () => {
+            // event.preventDefault();
+            axios.get(`https://images-api.nasa.gov/search?q=mars`)
+            .then(res => {
+                setQuery(res.data);
+                console.log(res.data.collection.items.slice(0,6));
+            });
+        }
+        fetchData();
+    }, []);
 
   return (
     <div className="App">
@@ -82,6 +86,16 @@ function App() {
                 )
             })}
         </div> */}
+
+        <div>
+      <input
+        type="text"
+        value={query}
+        onChange={event => setQuery(event.target.value)}
+      />
+      </div>
+
+
 
     </div>
   );
