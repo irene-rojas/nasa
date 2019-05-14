@@ -7,11 +7,12 @@ import axios from 'axios';
 function App() {
 
     // photo of day
-    const [photoDay, setPhotoDay] = useState([]);
+    // const [photoDay, setPhotoDay] = useState([]);
     // near earth objects
-    const [neo, setNeo] = useState([]);
+    // const [neo, setNeo] = useState([]);
     // image search
-    const [query, setQuery] = useState([]);
+    const [data, setData] = useState([]);
+    const [query, setQuery] = useState("");
 
     // API calls
     // useEffect(() => {
@@ -31,23 +32,48 @@ function App() {
     // }, []);
     // [] tells it to run just once
 
-    useEffect(() => {
-        const fetchData = () => {
-            // event.preventDefault();
-            axios.get(`https://images-api.nasa.gov/search?q=mars`)
-            .then(res => {
-                setQuery(res.data);
-                console.log(res.data.collection.items.slice(0,6));
-            });
-        }
-        fetchData();
-    }, []);
+
+
+    // useEffect(() => {
+    //     const fetchData = () => {
+    //         const result = axios(`https://images-api.nasa.gov/search?q=mars`,
+    //         );
+    //         setData(result.data);
+    //     }
+    //     fetchData();
+    //     console.log(fetchData().result.data);
+
+
+    // }, [search]);
+
+    const fetchData = () => {
+        // event.preventDefault();
+        axios.get(`https://images-api.nasa.gov/search?q=${query}`)
+        .then(res => {
+            setData(res.data);
+            console.log(res.data.collection.items.slice(0,6));
+        });
+    };
+
 
   return (
     <div className="App">
 
         <div className="header">
             <h1>Exploring the NASA Open API Universe</h1>
+        </div>
+
+        <div>
+            <input
+                type="text"
+                value={query}
+                onChange={event => setQuery(event.target.value)}
+            />
+            <button 
+                type="button" 
+                onClick={() => fetchData()}>
+                Search
+            </button>
         </div>
 
         {/* <div className="photoDayDiv">
@@ -87,13 +113,7 @@ function App() {
             })}
         </div> */}
 
-        <div>
-      <input
-        type="text"
-        value={query}
-        onChange={event => setQuery(event.target.value)}
-      />
-      </div>
+
 
 
 
