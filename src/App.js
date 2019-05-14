@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
-import PhotoDay from "./components/PhotoDay/PhotoDay";
-import NearEarth from "./components/NearEarth/NearEarth";
+// import PhotoDay from "./components/PhotoDay/PhotoDay";
+// import NearEarth from "./components/NearEarth/NearEarth";
 
 function App() {
 
@@ -37,7 +37,7 @@ function App() {
             <h1>Exploring the NASA Open API Universe</h1>
         </div>
 
-        <div className="photoDayDiv">
+        {/* <div className="photoDayDiv">
             <PhotoDay 
                 copyright={photoDay.copyright}
                 date={photoDay.date}
@@ -45,13 +45,13 @@ function App() {
                 img={photoDay.hdurl}
                 title={photoDay.title}
             />
-        </div>
+        </div> */}
 
         <br/>
         {/* in NearEarth, also works: hazardous={object.is_potentially_hazardous_asteroid ? "true" : "false"} */}
         <br/>
 
-        <div className="nearEarthDiv">
+        {/* <div className="nearEarthDiv">
             <h1 className="neoTitle">Near-Earth Objects</h1>
             {neo.map((object, index) => {
                 return (
@@ -60,7 +60,7 @@ function App() {
                             key={object.designation}
                             name={object.name}
                             magnitude={object.absolute_magnitude_h}
-                            hazardous={object.is_potentially_hazardous_asteroid.toString()}
+                            hazardous={object.is_potentially_hazardous_asteroid.toString().toUpperCase()}
                             jplUrl={object.nasa_jpl_url}
                             diameterMilesMax={object.estimated_diameter.miles.estimated_diameter_max}
                             diameterMilesMin={object.estimated_diameter.miles.estimated_diameter_min}
@@ -72,7 +72,7 @@ function App() {
                     </div>
                 )
             })}
-        </div>
+        </div> */}
 
     </div>
   );
