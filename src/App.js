@@ -1,56 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
-// import PhotoDay from "./components/PhotoDay/PhotoDay";
-// import NearEarth from "./components/NearEarth/NearEarth";
+import PhotoDay from "./components/PhotoDay/PhotoDay";
+import NearEarth from "./components/NearEarth/NearEarth";
 
 function App() {
 
     // photo of day
-    // const [photoDay, setPhotoDay] = useState([]);
+    const [photoDay, setPhotoDay] = useState([]);
     // near earth objects
-    // const [neo, setNeo] = useState([]);
+    const [neo, setNeo] = useState([]);
     // image search
     const [data, setData] = useState([]);
     const [query, setQuery] = useState("");
 
     // API calls
-    // useEffect(() => {
-    //     // photo of day
-    //     axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API}`)
-    //     .then(res => {
-    //         setPhotoDay(res.data);
-    //         // console.log(res.data);
-    //     });
-    //     // near-earth objects
-    //     axios.get(`https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${process.env.REACT_APP_NASA_API}`)
-    //     .then(res => {
-    //         // only save first two items in array
-    //         setNeo(res.data.near_earth_objects.slice(0,3));
-    //         console.log(res.data.near_earth_objects.slice(0,3));
-    //     });
-    // }, []);
+    useEffect(() => {
+        // photo of day
+        axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API}`)
+        .then(res => {
+            setPhotoDay(res.data);
+            // console.log(res.data);
+        });
+        // near-earth objects
+        axios.get(`https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${process.env.REACT_APP_NASA_API}`)
+        .then(res => {
+            // only save first two items in array
+            setNeo(res.data.near_earth_objects.slice(0,3));
+            console.log(res.data.near_earth_objects.slice(0,3));
+        });
+    }, []);
     // [] tells it to run just once
 
-
-
-    // useEffect(() => {
-    //     const fetchData = () => {
-    //         const result = axios(`https://images-api.nasa.gov/search?q=mars`,
-    //         );
-    //         setData(result.data);
-    //     }
-    //     fetchData();
-    //     console.log(fetchData().result.data);
-
-
-    // }, [search]);
-
-    const fetchData = () => {
-        // event.preventDefault();
+    const imageSearch = () => {
         axios.get(`https://images-api.nasa.gov/search?q=${query}`)
         .then(res => {
-            setData(res.data);
+            setData(res.data.collection.items.slice(0,6));
             console.log(res.data.collection.items.slice(0,6));
         });
     };
@@ -64,6 +49,7 @@ function App() {
         </div>
 
         <div>
+            Image search section for testing. APOD and NEO temporarily removed.
             <input
                 type="text"
                 value={query}
@@ -71,7 +57,7 @@ function App() {
             />
             <button 
                 type="button" 
-                onClick={() => fetchData()}>
+                onClick={() => imageSearch()}>
                 Search
             </button>
         </div>
@@ -85,10 +71,6 @@ function App() {
                 title={photoDay.title}
             />
         </div> */}
-
-        <br/>
-        {/* in NearEarth, also works: hazardous={object.is_potentially_hazardous_asteroid ? "true" : "false"} */}
-        <br/>
 
         {/* <div className="nearEarthDiv">
             <h1 className="neoTitle">Near-Earth Objects</h1>
@@ -112,10 +94,6 @@ function App() {
                 )
             })}
         </div> */}
-
-
-
-
 
     </div>
   );
