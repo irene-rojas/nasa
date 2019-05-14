@@ -8,6 +8,7 @@ function App() {
 
     const [photoDay, setPhotoDay] = useState([]);
     const [neo, setNeo] = useState([]);
+    const [search, setSearch] = useState([]);
 
     // API calls
     useEffect(() => {
@@ -26,8 +27,16 @@ function App() {
             // endpoint testing
             console.log(res.data.near_earth_objects[0].is_potentially_hazardous_asteroid);
         });
+        // event.preventDefault();
+        axios.get(`https://images-api.nasa.gov/search?q=mars`)
+        .then(res => {
+            setSearch(res.data);
+            console.log(res.data.collection.items.slice(0,6));
+        });
+
     }, []);
     // [] tells it to run just once
+
 
 
   return (
