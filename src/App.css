@@ -9,6 +9,7 @@
     }
 
     .header {
+        /* in App */
         grid-row: 1/2;
         grid-column: 1/-1;
         background-color: #000000;
@@ -21,14 +22,17 @@
     }
 
     .nearEarthDiv {
+        /* in App */
         grid-row: 3/4;
         grid-column: 2/5;
+        /* in nearEarthDiv */
         display: grid;
         grid-template-rows: auto 1fr;
         grid-template-columns: repeat(3, 1fr);
     }
 
     .neoTitle {
+        /* in nearEarthDiv */
         grid-row: 1/2;
         grid-column: 1/-1;
         border-bottom: 2px solid black;
@@ -36,18 +40,31 @@
     }
 
     .neoDiv0 {
+        /* in nearEarthDiv */
         grid-row: 2/3;
         grid-column: 1/2;
     }
 
     .neoDiv1 {
+        /* in nearEarthDiv */
         grid-row: 2/3;
         grid-row: 2/3;
     }
 
     .neoDiv2 {
+        /* in nearEarthDiv */
         grid-row: 2/3;
         grid-column: 3/4;
+    }
+
+    .imageSearchDiv {
+        /* in App */
+        grid-row: 4/5;
+        grid-column: 2/5;
+    }
+
+    .searchTitle {
+        border-bottom: 2px solid black;
     }
 
 }

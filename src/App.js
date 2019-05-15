@@ -39,7 +39,7 @@ function App() {
             setData(res.data.collection.items.slice(0,6));
             console.log(res.data.collection.items.slice(0,6));
             // endpoint testing
-            console.log(res.data.collection.items[0].links[0].href);
+            // console.log(res.data.collection.items[0].links[0].href);
         });
     };
 
@@ -52,7 +52,7 @@ function App() {
         </div>
 
         <div className="imageSearchDiv">
-            Image search section for testing. APOD and NEO temporarily removed.
+            <h1 className="searchTitle">Search the NASA Image Archive</h1>
             <input
                 type="text"
                 value={query}
@@ -64,20 +64,23 @@ function App() {
                 Search
             </button>
 
-            {data.map((image, index) => {
+            {data.map(image => {
                 return (
                     <ImageSearch 
-                        key={index}
+                        key={image.data[0].nasa_id}
                         title={image.data[0].title}
                         date={image.data[0].date_created}
                         description={image.data[0].description}
+                        id={image.data[0].nasa_id}
                         src={image.links[0].href}
                     />
                 )
             })}
+            {/* error handling for working search terms but no image path */}
+            {/* OR do not return result without image link */}
         </div>
 
-        {/* <div className="photoDayDiv">
+        <div className="photoDayDiv">
             <PhotoDay 
                 copyright={photoDay.copyright}
                 date={photoDay.date}
@@ -85,9 +88,9 @@ function App() {
                 img={photoDay.hdurl}
                 title={photoDay.title}
             />
-        </div> */}
+        </div>
 
-        {/* <div className="nearEarthDiv">
+        <div className="nearEarthDiv">
             <h1 className="neoTitle">Near-Earth Objects</h1>
             {neo.map((object, index) => {
                 return (
@@ -108,7 +111,7 @@ function App() {
                     </div>
                 )
             })}
-        </div> */}
+        </div>
 
     </div>
   );
