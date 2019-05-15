@@ -72,12 +72,11 @@ function App() {
                         date={image.data[0].date_created}
                         description={image.data[0].description}
                         id={image.data[0].nasa_id}
-                        src={image.links[0].href}
+                        src={image.links[0].href[0]}
                     />
                 )
             })}
-            {/* error handling for working search terms but no image path */}
-            {/* OR do not return result without image link */}
+            {/* error handling?? */}
         </div>
 
         <div className="photoDayDiv">
