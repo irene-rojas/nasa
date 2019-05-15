@@ -72,7 +72,7 @@ function App() {
                         date={image.data[0].date_created}
                         description={image.data[0].description}
                         id={image.data[0].nasa_id}
-                        src={image.links[0].href[0]}
+                        src={image.links[0].href}
                     />
                 )
             })}
