@@ -1,4 +1,9 @@
 .imageResultsDiv {
     border: 1px solid black;
     margin-bottom: 20px;
+    padding: 5px;
+}
+
+.image {
+    width: 300px;
 }
