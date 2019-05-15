@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import PhotoDay from "./components/PhotoDay/PhotoDay";
 import NearEarth from "./components/NearEarth/NearEarth";
+import ImageSearch from "./components/ImageSearch/ImageSearch";
 
 function App() {
 
@@ -37,6 +38,8 @@ function App() {
         .then(res => {
             setData(res.data.collection.items.slice(0,6));
             console.log(res.data.collection.items.slice(0,6));
+            // endpoint testing
+            console.log(res.data.collection.items[0].links[0].href);
         });
     };
 
@@ -48,7 +51,7 @@ function App() {
             <h1>Exploring the NASA Open API Universe</h1>
         </div>
 
-        <div>
+        <div className="imageSearchDiv">
             Image search section for testing. APOD and NEO temporarily removed.
             <input
                 type="text"
@@ -60,6 +63,18 @@ function App() {
                 onClick={() => imageSearch()}>
                 Search
             </button>
+
+            {data.map((image, index) => {
+                return (
+                    <ImageSearch 
+                        key={index}
+                        title={image.data[0].title}
+                        date={image.data[0].date_created}
+                        description={image.data[0].description}
+                        src={image.links[0].href}
+                    />
+                )
+            })}
         </div>
 
         {/* <div className="photoDayDiv">
