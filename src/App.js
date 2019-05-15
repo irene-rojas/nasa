@@ -3,11 +3,17 @@ import './App.css';
 import axios from 'axios';
 import PhotoDay from "./components/PhotoDay/PhotoDay";
 import NearEarth from "./components/NearEarth/NearEarth";
+import ImageSearch from "./components/ImageSearch/ImageSearch";
 
 function App() {
 
+    // photo of day
     const [photoDay, setPhotoDay] = useState([]);
+    // near earth objects
     const [neo, setNeo] = useState([]);
+    // image search
+    const [query, setQuery] = useState("");
+    const [data, setData] = useState([]);
 
     // API calls
     useEffect(() => {
@@ -23,11 +29,19 @@ function App() {
             // only save first two items in array
             setNeo(res.data.near_earth_objects.slice(0,3));
             console.log(res.data.near_earth_objects.slice(0,3));
-            // endpoint testing
-            console.log(res.data.near_earth_objects[0].is_potentially_hazardous_asteroid);
         });
     }, []);
     // [] tells it to run just once
+
+    const imageSearch = () => {
+        axios.get(`https://images-api.nasa.gov/search?q=${query}`)
+        .then(res => {
+            setData(res.data.collection.items.slice(0,6));
+            console.log(res.data.collection.items.slice(0,6));
+            // endpoint testing
+            // console.log(res.data.collection.items[0].links[0].href);
+        });
+    };
 
 
   return (
@@ -35,6 +49,35 @@ function App() {
 
         <div className="header">
             <h1>Exploring the NASA Open API Universe</h1>
+        </div>
+
+        <div className="imageSearchDiv">
+            <h1 className="searchTitle">Search the NASA Image Archive</h1>
+            <input
+                type="text"
+                value={query}
+                onChange={event => setQuery(event.target.value)}
+            />
+            <button 
+                type="button" 
+                onClick={() => imageSearch()}>
+                Search
+            </button>
+
+            {data.map(image => {
+                return (
+                    <ImageSearch 
+                        key={image.data[0].nasa_id}
+                        title={image.data[0].title}
+                        date={image.data[0].date_created}
+                        description={image.data[0].description}
+                        id={image.data[0].nasa_id}
+                        src={image.links[0].href}
+                    />
+                )
+            })}
+            {/* error handling for working search terms but no image path */}
+            {/* OR do not return result without image link */}
         </div>
 
         <div className="photoDayDiv">
@@ -47,10 +90,6 @@ function App() {
             />
         </div>
 
-        <br/>
-        {/* in NearEarth, also works: hazardous={object.is_potentially_hazardous_asteroid ? "true" : "false"} */}
-        <br/>
-
         <div className="nearEarthDiv">
             <h1 className="neoTitle">Near-Earth Objects</h1>
             {neo.map((object, index) => {
@@ -60,7 +99,7 @@ function App() {
                             key={object.designation}
                             name={object.name}
                             magnitude={object.absolute_magnitude_h}
-                            hazardous={object.is_potentially_hazardous_asteroid.toString()}
+                            hazardous={object.is_potentially_hazardous_asteroid.toString().toUpperCase()}
                             jplUrl={object.nasa_jpl_url}
                             diameterMilesMax={object.estimated_diameter.miles.estimated_diameter_max}
                             diameterMilesMin={object.estimated_diameter.miles.estimated_diameter_min}
