@@ -10,7 +10,7 @@ const PhotoDay = (props) => {
             <br/>
             <h3>{props.title}</h3>
             <br/>
-            <a href={props.img}><img src={props.img} alt={props.title} width="500px"/></a>
+            <a href={props.img}><img src={props.img} alt={props.title}/></a>
             <br/>
             Copyright: {props.copyright}
             <br/>
