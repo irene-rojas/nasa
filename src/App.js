@@ -97,6 +97,7 @@ function App() {
                 Search
             </button>
 
+            {/* backup */}
             {data.map(image => {
                 return (
                     <ImageSearch 
@@ -109,7 +110,9 @@ function App() {
                     />
                 )
             })}
-            {/* error handling?? */}
+
+            {/* error handling because of missing links array?? */}
+
         </div>
 
     </div>
