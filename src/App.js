@@ -14,6 +14,7 @@ function App() {
     // image search
     const [query, setQuery] = useState("");
     const [data, setData] = useState([]);
+    const [imgResults, setImgResults] = useState([]);
 
     // API calls
     useEffect(() => {
