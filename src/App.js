@@ -37,8 +37,8 @@ function App() {
     const imageSearch = () => {
         axios.get(`https://images-api.nasa.gov/search?q=${query}`)
         .then(res => {
-            const links = res.data.collection.items.links;
-            setData(res.data.collection.items.slice(0,6).filter(links));
+            // const links = res.data.collection.items.links;
+            setData(res.data.collection.items.slice(0,6));
             console.log(res.data.collection.items.slice(0,6));
             // endpoint testing
             console.log(res.data.collection.items[0].links[0].href);
@@ -112,8 +112,7 @@ function App() {
                     />
                 )
             })}
-
-            {/* error handling because of missing links array?? */}
+            {/* if item doesn't have image.links, entire app crashes */}
 
         </div>
 
