@@ -14,7 +14,7 @@ function App() {
     // image search
     const [query, setQuery] = useState("");
     const [data, setData] = useState([]);
-    const [imgResults, setImgResults] = useState([]);
+    // const [imgResults, setImgResults] = useState([]);
 
     // API calls
     useEffect(() => {
@@ -37,7 +37,8 @@ function App() {
     const imageSearch = () => {
         axios.get(`https://images-api.nasa.gov/search?q=${query}`)
         .then(res => {
-            setData(res.data.collection.items.slice(0,6));
+            const links = res.data.collection.items.links;
+            setData(res.data.collection.items.slice(0,6).filter(links));
             console.log(res.data.collection.items.slice(0,6));
             // endpoint testing
             console.log(res.data.collection.items[0].links[0].href);
