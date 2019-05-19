@@ -14,6 +14,7 @@ function App() {
     // image search
     const [query, setQuery] = useState("");
     const [data, setData] = useState([]);
+    // const [imgResults, setImgResults] = useState([]);
 
     // API calls
     useEffect(() => {
@@ -36,10 +37,11 @@ function App() {
     const imageSearch = () => {
         axios.get(`https://images-api.nasa.gov/search?q=${query}`)
         .then(res => {
+            // const links = res.data.collection.items.links;
             setData(res.data.collection.items.slice(0,6));
             console.log(res.data.collection.items.slice(0,6));
             // endpoint testing
-            // console.log(res.data.collection.items[0].links[0].href);
+            console.log(res.data.collection.items[0].links[0].href);
         });
     };
 
@@ -49,35 +51,6 @@ function App() {
 
         <div className="header">
             <h1>Exploring the NASA Open API Universe</h1>
-        </div>
-
-        <div className="imageSearchDiv">
-            <h1 className="searchTitle">Search the NASA Image Archive</h1>
-            <input
-                type="text"
-                value={query}
-                onChange={event => setQuery(event.target.value)}
-            />
-            <button 
-                type="button" 
-                onClick={() => imageSearch()}>
-                Search
-            </button>
-
-            {data.map(image => {
-                return (
-                    <ImageSearch 
-                        key={image.data[0].nasa_id}
-                        title={image.data[0].title}
-                        date={image.data[0].date_created}
-                        description={image.data[0].description}
-                        id={image.data[0].nasa_id}
-                        src={image.links[0].href}
-                    />
-                )
-            })}
-            {/* error handling for working search terms but no image path */}
-            {/* OR do not return result without image link */}
         </div>
 
         <div className="photoDayDiv">
@@ -111,6 +84,36 @@ function App() {
                     </div>
                 )
             })}
+        </div>
+
+        <div className="imageSearchDiv">
+            <h1 className="searchTitle">Search the NASA Image Archive</h1>
+            <input
+                type="text"
+                value={query}
+                onChange={event => setQuery(event.target.value)}
+            />
+            <button 
+                type="button" 
+                onClick={() => imageSearch()}>
+                Search
+            </button>
+
+            {/* backup */}
+            {data.map(image => {
+                return (
+                    <ImageSearch 
+                        key={image.data[0].nasa_id}
+                        title={image.data[0].title}
+                        date={image.data[0].date_created}
+                        description={image.data[0].description}
+                        id={image.data[0].nasa_id}
+                        src={image.links[0].href}
+                    />
+                )
+            })}
+            {/* if item doesn't have image.links, entire app crashes */}
+
         </div>
 
     </div>
