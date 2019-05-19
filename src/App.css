@@ -61,6 +61,7 @@
         /* in App */
         grid-row: 4/5;
         grid-column: 2/5;
+        padding: 20px 20px 40px 20px;
     }
 
     .searchTitle {
