@@ -14,7 +14,16 @@ function App() {
     // image search
     const [query, setQuery] = useState("");
     const [data, setData] = useState([]);
-    // const [imgResults, setImgResults] = useState([]);
+    const [imgResults, setImgResults] = useState([
+        {
+            "nasa_id": "",
+            "title": "",
+            "date": "",
+            "description": "",
+            "id": "",
+            "src": ""
+        }
+    ]);
 
     // API calls
     useEffect(() => {
@@ -37,13 +46,17 @@ function App() {
     const imageSearch = () => {
         axios.get(`https://images-api.nasa.gov/search?q=${query}`)
         .then(res => {
-            // const links = res.data.collection.items.links;
-            setData(res.data.collection.items.slice(0,6));
+            setData(transformImgSearch(res.data.collection.items.slice(0,6)));
             console.log(res.data.collection.items.slice(0,6));
             // endpoint testing
             console.log(res.data.collection.items[0].links[0].href);
         });
     };
+
+    // filter image results to remove no photos
+    function transformImgSearch() {
+
+    }
 
 
   return (
@@ -99,7 +112,6 @@ function App() {
                 Search
             </button>
 
-            {/* backup */}
             {data.map(image => {
                 return (
                     <ImageSearch 
@@ -112,7 +124,6 @@ function App() {
                     />
                 )
             })}
-            {/* if item doesn't have image.links, entire app crashes */}
 
         </div>
 
