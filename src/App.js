@@ -22,7 +22,6 @@ function App() {
             "src": ""
         }
     ]);
-    // const [imgResults, setImgResults] = useState([]);
 
     // API calls
     useEffect(() => {
@@ -125,12 +124,12 @@ function App() {
             {/* {data.map(image => {
                 return (
                     <ImageSearch 
-                        key={image.data[0].nasa_id}
-                        title={image.data[0].title}
-                        date={image.data[0].date_created}
-                        description={image.data[0].description}
-                        id={image.data[0].nasa_id}
-                        src={image.links[0].href}
+                        key={image.id}
+                        title={image.title}
+                        date={image.date}
+                        description={image.description}
+                        id={image.id}
+                        src={image.href}
                     />
                 )
             })} */}
