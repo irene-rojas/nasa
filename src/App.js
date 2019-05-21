@@ -13,17 +13,16 @@ function App() {
     const [neo, setNeo] = useState([]);
     // image search
     const [query, setQuery] = useState("");
-    const [data, setData] = useState([]);
-    const [imgResults, setImgResults] = useState([
+    const [data, setData] = useState([
         {
-            "nasa_id": "",
+            "id": "",
             "title": "",
             "date": "",
             "description": "",
-            "id": "",
             "src": ""
         }
     ]);
+    // const [imgResults, setImgResults] = useState([]);
 
     // API calls
     useEffect(() => {
@@ -49,14 +48,28 @@ function App() {
             setData(transformImgSearch(res.data.collection.items.slice(0,6)));
             console.log(res.data.collection.items.slice(0,6));
             // endpoint testing
-            console.log(res.data.collection.items[0].links[0].href);
+            // console.log(res.data.collection.items[0].links[0].href);
         });
     };
 
     // filter image results to remove no photos
-    function transformImgSearch() {
+    // function transformImgSearch(props) {
+    //     console.log(data);
+    // }
 
-    }
+    // filter image results to remove no photos
+    // function transformImgSearch(props) {
+    //     props.map(prop => (
+    //             {
+    //                 "id": prop.data[0].nasa_id,
+    //                 "title": prop.data[0].title,
+    //                 "data": prop.data[0].date_created,
+    //                 "description": prop.data[0].description,
+    //                 "src": prop.links[0].href
+    //             }
+    //     ))
+    //     console.log(data);
+    // }
 
 
   return (
@@ -112,7 +125,7 @@ function App() {
                 Search
             </button>
 
-            {data.map(image => {
+            {/* {data.map(image => {
                 return (
                     <ImageSearch 
                         key={image.data[0].nasa_id}
@@ -123,7 +136,7 @@ function App() {
                         src={image.links[0].href}
                     />
                 )
-            })}
+            })} */}
 
         </div>
 
