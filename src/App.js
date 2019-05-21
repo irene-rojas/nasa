@@ -27,7 +27,7 @@ function App() {
         // near-earth objects
         axios.get(`https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${process.env.REACT_APP_NASA_API}`)
         .then(res => {
-            // only save first two items in array
+            // only save first 3 items in array
             setNeo(res.data.near_earth_objects.slice(0,3));
             console.log(res.data.near_earth_objects.slice(0,3));
         });
