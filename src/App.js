@@ -3,7 +3,7 @@ import './App.css';
 import axios from 'axios';
 import PhotoDay from "./components/PhotoDay/PhotoDay";
 import NearEarth from "./components/NearEarth/NearEarth";
-import ImageSearch from "./components/ImageSearch/ImageSearch";
+// import ImageSearch from "./components/ImageSearch/ImageSearch";
 
 function App() {
 
