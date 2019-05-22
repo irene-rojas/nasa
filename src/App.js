@@ -49,22 +49,38 @@ function App() {
             // endpoint testing
             // console.log(res.data.collection.items[0].links[0].href);
         });
+        console.log(data);
     };
 
     // filter image results to remove no photos
+    // function transformImgSearch(props) {
+    //     props.filter(prop => 
+    //         prop.links).map(prop => 
+    //             [
+    //                 {
+    //                     "id": prop.data[0].nasa_id,
+    //                     "title": prop.data[0].title,
+    //                     "date": prop.data[0].date_created,
+    //                     "description": prop.data[0].description,
+    //                     "src": prop.links[0].href
+    //                 }
+    //             ]);
+    //         console.log(data);
+    // }
+
     function transformImgSearch(props) {
-        props.filter(prop => 
-            prop.links !== null).map(prop => 
-                [
-                    {
-                        "id": prop.data[0].nasa_id,
-                        "title": prop.data[0].title,
-                        "date": prop.data[0].date_created,
-                        "description": prop.data[0].description,
-                        "src": prop.links[0].href
-                    }
-                ]);
-            console.log(data);
+        if (props.links) {
+            props.map(prop => 
+            [
+                {
+                    "id": prop.data[0].nasa_id,
+                    "title": prop.data[0].title,
+                    "date": prop.data[0].date_created,
+                    "description": prop.data[0].description,
+                    "src": prop.links[0].href
+                }
+            ]);
+        }
     }
 
 
