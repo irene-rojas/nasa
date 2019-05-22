@@ -110,16 +110,19 @@ function App() {
 
         <div className="imageSearchDiv">
             <h1 className="searchTitle">Search the NASA Image Archive</h1>
-            <input
-                type="text"
-                value={query}
-                onChange={event => setQuery(event.target.value)}
-            />
-            <button 
-                type="button" 
-                onClick={() => imageSearch()}>
-                Search
-            </button>
+
+            <form onSubmit={event => {
+                event.preventDefault();
+                imageSearch();}}>
+                <input 
+                    value={query}
+                    onChange={event => {
+                        event.preventDefault();
+                        setQuery(event.target.value);
+                        }}
+                /> 
+                <button>Search</button>
+            </form>
 
             {/* {data.map(image => {
                 return (
