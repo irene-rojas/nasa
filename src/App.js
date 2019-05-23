@@ -41,17 +41,16 @@ function App() {
     }, []);
     // [] tells it to run just once
 
+    // image search function
     const imageSearch = () => {
         axios.get(`https://images-api.nasa.gov/search?q=${query}`)
         .then(res => {
             setData(transformImgSearch(res.data.collection.items.slice(0,6)));
             console.log(res.data.collection.items.slice(0,6));
-            // endpoint testing
-            // console.log(res.data.collection.items[0].links[0].href);
         });
     };
 
-    // filter image results to remove no photos
+    // filter image search results to remove no photos
     function transformImgSearch(props) {
         return (
         props.filter(prop => 
