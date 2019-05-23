@@ -101,7 +101,6 @@ function App() {
                 <button>Search</button>
             </form>
 
-            {/* backup */}
             {data.map(image => {
                 return (
                     <ImageSearch 
@@ -114,7 +113,6 @@ function App() {
                     />
                 )
             })}
-            {/* if item doesn't have image.links, entire app crashes */}
 
         </div>
 
