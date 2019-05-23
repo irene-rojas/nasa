@@ -12,8 +12,19 @@
         /* in App */
         grid-row: 1/2;
         grid-column: 1/-1;
+        /* in header */
+        display: grid;
+        grid-template-rows: repeat(2, auto);
+        grid-template-columns: repeat(6, auto);
         background-color: #000000;
         color: white;
+    }
+
+    .masterTitle {
+        /* in header */
+        grid-row: 1/2;
+        grid-column: 1/-1;
+        text-align: center;
     }
 
     .photoDayDiv {

@@ -54,6 +54,7 @@ function App() {
 
     // filter image results to remove no photos
     function transformImgSearch(props) {
+        return (
         props.filter(prop => 
             prop.links).map(prop => 
                 (
@@ -64,8 +65,9 @@ function App() {
                         "description": prop.data[0].description,
                         "src": prop.links[0].href
                     }
-                ));
-            console.log(data);
+                )
+            )
+        );
     }
 
     // function transformImgSearch(props) {
@@ -88,7 +90,11 @@ function App() {
     <div className="App">
 
         <div className="header">
-            <h1>Exploring the NASA Open API Universe</h1>
+            <h1 className="masterTitle">Exploring the NASA Open API Universe</h1>
+            <div className="menu">
+                
+            </div>
+
         </div>
 
         <div className="photoDayDiv" id="photoDayDiv">
