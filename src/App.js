@@ -78,6 +78,7 @@ function App() {
             <div className="apodMenu"><a href="#apodAnchor">Astronomy Picture of the Day</a></div>
             <div className="neoMenu"><a href="#neoAnchor">Near-Earth Ojects</a></div>
             <div className="searchMenu"><a href="#imageSearchDiv">NASA Image Archive Search</a></div>
+            <div className="marsMenu"><a href="#marsAnchor">Mars Rover Photos</a></div>
         </div>
 
         <div id="apodAnchor"></div>
@@ -154,6 +155,8 @@ function App() {
             })}
 
         </div>
+
+        <div id="marsAnchor"></div>
 
     </div>
   );
