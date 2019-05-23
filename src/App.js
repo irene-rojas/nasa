@@ -49,7 +49,6 @@ function App() {
             // endpoint testing
             // console.log(res.data.collection.items[0].links[0].href);
         });
-        console.log(data);
     };
 
     // filter image results to remove no photos
@@ -70,31 +69,15 @@ function App() {
         );
     }
 
-    // function transformImgSearch(props) {
-    //     if (props.links) {
-    //         props.map(prop => 
-    //         (
-    //             {
-    //                 "id": prop.data[0].nasa_id,
-    //                 "title": prop.data[0].title,
-    //                 "date": prop.data[0].date_created,
-    //                 "description": prop.data[0].description,
-    //                 "src": prop.links[0].href
-    //             }
-    //         ));
-    //     }
-    // }
-
 
   return (
     <div className="App">
 
         <div className="header">
             <h1 className="masterTitle">Exploring the NASA Open API Universe</h1>
-            <div className="menu">
-                
-            </div>
-
+            <div className="apodMenu"><a href="#photoDayDiv">Astronomy Picture of the Day</a></div>
+            <div className="neoMenu"><a href="#nearEarthDiv">Near-Earth Ojects</a></div>
+            <div className="searchMenu"><a href="#imageSearchDiv">NASA Image Archive Search</a></div>
         </div>
 
         <div className="photoDayDiv" id="photoDayDiv">
@@ -133,7 +116,9 @@ function App() {
         <div className="imageSearchDiv" id="imageSearchDiv">
             <h1 className="searchTitle">Search the NASA Image Archive</h1>
 
-            <form onSubmit={event => {
+            <form 
+                className="imageSearchForm"
+                onSubmit={event => {
                 event.preventDefault();
                 imageSearch();}}>
                 <input 
@@ -144,9 +129,12 @@ function App() {
                         }}
                 /> 
                 <button>Search</button>
+                <br/>
+                Returns top 6 results
             </form>
 
-            {data.map(image => {
+            {query &&
+                data.map(image => {
                 return (
                     <ImageSearch 
                         key={image.id}
@@ -154,7 +142,7 @@ function App() {
                         date={image.date}
                         description={image.description}
                         id={image.id}
-                        src={image.href}
+                        src={image.src}
                     />
                 )
             })}

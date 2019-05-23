@@ -4,8 +4,18 @@
         text-align: center;
         height: 100vh;
         display: grid;
-        grid-template-rows: 50px repeat(3, 1fr);
+        grid-template-rows: 80px repeat(3, 1fr);
         grid-template-columns: 75px repeat(3, auto) 75px;
+    }
+
+    a:link {
+        text-decoration: none !important;
+        color: white;
+    }
+
+    a:visited {
+        text-decoration: none !important;
+        color: white;
     }
 
     .header {
@@ -15,9 +25,14 @@
         /* in header */
         display: grid;
         grid-template-rows: repeat(2, auto);
-        grid-template-columns: repeat(6, auto);
+        grid-template-columns: repeat(6, 1fr);
         background-color: #000000;
         color: white;
+        text-align: center;
+        top: 0;
+        position: sticky;
+        z-index: 100;
+
     }
 
     .masterTitle {
@@ -27,7 +42,26 @@
         text-align: center;
     }
 
+    .apodMenu {
+        /* in header */
+        grid-row: 2/3;
+        grid-column: 2/3;
+    }
+
+    .neoMenu {
+        /* in header */
+        grid-row: 2/3;
+        grid-column: 3/4;
+    }
+
+    .searchMenu {
+        /* in header */
+        grid-row: 2/3;
+        grid-column: 4/5;
+    }
+
     .photoDayDiv {
+        /* in App */
         grid-row: 2/3;
         grid-column: 2/5;
     }
@@ -77,6 +111,10 @@
 
     .searchTitle {
         border-bottom: 2px solid black;
+    }
+
+    .imageSearchForm {
+        padding: 10px;
     }
 
 }
