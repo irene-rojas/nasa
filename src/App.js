@@ -3,7 +3,7 @@ import './App.css';
 import axios from 'axios';
 import PhotoDay from "./components/PhotoDay/PhotoDay";
 import NearEarth from "./components/NearEarth/NearEarth";
-// import ImageSearch from "./components/ImageSearch/ImageSearch";
+import ImageSearch from "./components/ImageSearch/ImageSearch";
 
 function App() {
 
@@ -53,35 +53,35 @@ function App() {
     };
 
     // filter image results to remove no photos
-    // function transformImgSearch(props) {
-    //     props.filter(prop => 
-    //         prop.links).map(prop => 
-    //             [
-    //                 {
-    //                     "id": prop.data[0].nasa_id,
-    //                     "title": prop.data[0].title,
-    //                     "date": prop.data[0].date_created,
-    //                     "description": prop.data[0].description,
-    //                     "src": prop.links[0].href
-    //                 }
-    //             ]);
-    //         console.log(data);
-    // }
-
     function transformImgSearch(props) {
-        if (props.links) {
-            props.map(prop => 
-            [
-                {
-                    "id": prop.data[0].nasa_id,
-                    "title": prop.data[0].title,
-                    "date": prop.data[0].date_created,
-                    "description": prop.data[0].description,
-                    "src": prop.links[0].href
-                }
-            ]);
-        }
+        props.filter(prop => 
+            prop.links).map(prop => 
+                (
+                    {
+                        "id": prop.data[0].nasa_id,
+                        "title": prop.data[0].title,
+                        "date": prop.data[0].date_created,
+                        "description": prop.data[0].description,
+                        "src": prop.links[0].href
+                    }
+                ));
+            console.log(data);
     }
+
+    // function transformImgSearch(props) {
+    //     if (props.links) {
+    //         props.map(prop => 
+    //         (
+    //             {
+    //                 "id": prop.data[0].nasa_id,
+    //                 "title": prop.data[0].title,
+    //                 "date": prop.data[0].date_created,
+    //                 "description": prop.data[0].description,
+    //                 "src": prop.links[0].href
+    //             }
+    //         ));
+    //     }
+    // }
 
 
   return (
@@ -140,7 +140,7 @@ function App() {
                 <button>Search</button>
             </form>
 
-            {/* {data.map(image => {
+            {data.map(image => {
                 return (
                     <ImageSearch 
                         key={image.id}
@@ -151,7 +151,7 @@ function App() {
                         src={image.href}
                     />
                 )
-            })} */}
+            })}
 
         </div>
 
