@@ -71,14 +71,16 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className="App" id="top">
 
         <div className="header">
-            <h1 className="masterTitle">Exploring the NASA Open API Universe</h1>
-            <div className="apodMenu"><a href="#photoDayDiv">Astronomy Picture of the Day</a></div>
-            <div className="neoMenu"><a href="#nearEarthDiv">Near-Earth Ojects</a></div>
+            <h1 className="masterTitle"><a href="#top">Exploring the NASA Open API Universe</a></h1>
+            <div className="apodMenu"><a href="#apodAnchor">Astronomy Picture of the Day</a></div>
+            <div className="neoMenu"><a href="#neoAnchor">Near-Earth Ojects</a></div>
             <div className="searchMenu"><a href="#imageSearchDiv">NASA Image Archive Search</a></div>
         </div>
+
+        <div id="apodAnchor"></div>
 
         <div className="photoDayDiv" id="photoDayDiv">
             <PhotoDay 
@@ -89,6 +91,8 @@ function App() {
                 title={photoDay.title}
             />
         </div>
+
+        <div id="neoAnchor"></div>
 
         <div className="nearEarthDiv" id="nearEarthDiv">
             <h1 className="neoTitle">Near-Earth Objects</h1>
@@ -112,6 +116,8 @@ function App() {
                 )
             })}
         </div>
+
+        <div id="imageSearchAnchor"></div>
 
         <div className="imageSearchDiv" id="imageSearchDiv">
             <h1 className="searchTitle">Search the NASA Image Archive</h1>
