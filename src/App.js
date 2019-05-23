@@ -91,7 +91,7 @@ function App() {
             <h1>Exploring the NASA Open API Universe</h1>
         </div>
 
-        <div className="photoDayDiv">
+        <div className="photoDayDiv" id="photoDayDiv">
             <PhotoDay 
                 copyright={photoDay.copyright}
                 date={photoDay.date}
@@ -101,7 +101,7 @@ function App() {
             />
         </div>
 
-        <div className="nearEarthDiv">
+        <div className="nearEarthDiv" id="nearEarthDiv">
             <h1 className="neoTitle">Near-Earth Objects</h1>
             {neo.map((object, index) => {
                 return (
@@ -124,7 +124,7 @@ function App() {
             })}
         </div>
 
-        <div className="imageSearchDiv">
+        <div className="imageSearchDiv" id="imageSearchDiv">
             <h1 className="searchTitle">Search the NASA Image Archive</h1>
 
             <form onSubmit={event => {
