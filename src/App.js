@@ -22,6 +22,8 @@ function App() {
             "src": ""
         }
     ]);
+    // mars photos
+    const [marsPhotos, setMarsPhotos] = useState([]);
 
     // API calls
     useEffect(() => {
@@ -67,6 +69,18 @@ function App() {
             )
         );
     }
+
+    // mars photos
+    const marsSearch = () => {
+        axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&api_key=${process.env.REACT_APP_NASA_API}`)
+        .then(res => {
+            setMarsPhotos(res.data.photos);
+            console.log(res.data.photos);
+            // endpoint testing
+            console.log(res.data.photos[2].img_src);
+
+        });
+    };
 
 
   return (
@@ -156,6 +170,10 @@ function App() {
         </div>
 
         <div id="marsAnchor"></div>
+
+        <div className="marsDiv">
+            <button onClick={() => marsSearch()}>Mars Search</button>
+        </div>
 
     </div>
   );

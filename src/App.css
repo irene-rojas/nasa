@@ -15,7 +15,7 @@ a:visited {
         text-align: center;
         height: 100vh;
         display: grid;
-        grid-template-rows: 90px 30px 1fr 30px 1fr 30px 1fr 30px;
+        grid-template-rows: 90px 30px 1fr 30px 1fr 30px 1fr 30px 1fr;
         /* 90px = header */
         /* 30px = apodAnchor */
         /* 1fr = photoDayDiv */
@@ -24,6 +24,7 @@ a:visited {
         /* 30px = imageSearchAnchor */
         /* 1fr = imageSearchDiv */
         /* 30px = marsAnchor */
+        /* 1fr = marsDiv */
         grid-template-columns: 75px repeat(3, auto) 75px;
     }
 
@@ -150,6 +151,18 @@ a:visited {
 
     .imageSearchForm {
         padding: 10px;
+    }
+
+    .marsAnchor {
+        /* in App */
+        grid-row: 8/9;
+        grid-column: 2/5;
+    }
+
+    .marsDiv {
+        /* in App */
+        grid-row: 9/10;
+        grid-column: 2/5;
     }
 
 }
