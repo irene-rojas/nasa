@@ -1,10 +1,17 @@
 import React from 'react';
+import "./Mars.css";
 
 const Mars = (props) => {
     return (
 
-        <div>
-            <img src={props.img} alt={props.id}/>
+        <div className="marsInfo">
+            <img className="marsPhoto" src={props.img} alt={props.id}/>
+            <br/>
+            Taken: {props.date}
+            <br/>
+            Sol: {props.sol}
+            <br/>
+            Camera: {props.camera}
         </div>
 
     )
