@@ -4,6 +4,7 @@ import axios from 'axios';
 import PhotoDay from "./components/PhotoDay/PhotoDay";
 import NearEarth from "./components/NearEarth/NearEarth";
 import ImageSearch from "./components/ImageSearch/ImageSearch";
+import Mars from "./components/Mars/Mars";
 
 function App() {
 
@@ -77,7 +78,7 @@ function App() {
             setMarsPhotos(res.data.photos);
             console.log(res.data.photos);
             // endpoint testing
-            console.log(res.data.photos[2].img_src);
+            // console.log(res.data.photos[2].img_src);
 
         });
     };
@@ -174,6 +175,15 @@ function App() {
         <div className="marsDiv">
             <button onClick={() => marsSearch()}>Mars Search</button>
         </div>
+
+        {marsPhotos.map(photo => {
+            return (
+                <Mars 
+                    img={photo.img_src}
+                    key={photo.id}
+                />
+            )
+        })}
 
     </div>
   );
