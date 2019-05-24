@@ -84,6 +84,8 @@ function App() {
         });
     };
 
+    // camera and sol depend on rover selection
+
 
   return (
     <div className="App" id="top">
@@ -177,7 +179,6 @@ function App() {
         <div className="marsDiv">
             <h1 className="marsTitle">Mars Rover Image Search</h1>
 
-
             <form 
                 className="marsForm"
                 onSubmit={event => {
@@ -195,6 +196,7 @@ function App() {
                             <option value="opportunity">Opportunity</option>
                             <option value="spirit">Spirit</option>
                     </select>
+
 
                 <button>Search</button>
                 <br/>
