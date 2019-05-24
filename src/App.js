@@ -155,7 +155,7 @@ function App() {
                 /> 
                 <button>Search</button>
                 <br/>
-                Returns 6 results
+                Returns 6 results if available
             </form>
 
             {query &&
