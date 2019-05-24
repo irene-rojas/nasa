@@ -183,7 +183,7 @@ function App() {
                 marsSearch();}}>
                 <button>Search</button>
                 <br/>
-                Returns 24 results from each camera
+                Returns 24 results
             </form>
 
             {marsPhotos.map((photo, index) => {
