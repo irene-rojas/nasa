@@ -4,6 +4,7 @@ import axios from 'axios';
 import PhotoDay from "./components/PhotoDay/PhotoDay";
 import NearEarth from "./components/NearEarth/NearEarth";
 import ImageSearch from "./components/ImageSearch/ImageSearch";
+import Mars from "./components/Mars/Mars";
 
 function App() {
 
@@ -22,6 +23,8 @@ function App() {
             "src": ""
         }
     ]);
+    // mars photos
+    const [marsPhotos, setMarsPhotos] = useState([]);
 
     // API calls
     useEffect(() => {
@@ -41,17 +44,16 @@ function App() {
     }, []);
     // [] tells it to run just once
 
+    // image search function
     const imageSearch = () => {
         axios.get(`https://images-api.nasa.gov/search?q=${query}`)
         .then(res => {
             setData(transformImgSearch(res.data.collection.items.slice(0,6)));
             console.log(res.data.collection.items.slice(0,6));
-            // endpoint testing
-            // console.log(res.data.collection.items[0].links[0].href);
         });
     };
 
-    // filter image results to remove no photos
+    // filter image search results to remove no photos
     function transformImgSearch(props) {
         return (
         props.filter(prop => 
@@ -69,6 +71,18 @@ function App() {
         );
     }
 
+    // mars photos
+    const marsSearch = () => {
+        axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=2400&camera=navcam&api_key=${process.env.REACT_APP_NASA_API}`)
+        .then(res => {
+            setMarsPhotos(res.data.photos.slice(0,24));
+            console.log(res.data.photos.slice(0,24));
+            // endpoint testing
+            // console.log(res.data.photos[2].img_src);
+
+        });
+    };
+
 
   return (
     <div className="App" id="top">
@@ -78,6 +92,7 @@ function App() {
             <div className="apodMenu"><a href="#apodAnchor">Astronomy Picture of the Day</a></div>
             <div className="neoMenu"><a href="#neoAnchor">Near-Earth Ojects</a></div>
             <div className="searchMenu"><a href="#imageSearchDiv">NASA Image Archive Search</a></div>
+            <div className="marsMenu"><a href="#marsAnchor">Mars Rover Photos</a></div>
         </div>
 
         <div id="apodAnchor"></div>
@@ -96,6 +111,7 @@ function App() {
 
         <div className="nearEarthDiv" id="nearEarthDiv">
             <h1 className="neoTitle">Near-Earth Objects</h1>
+
             {neo.map((object, index) => {
                 return (
                     <div className={`neoDiv${index}`} key={object.designation}>
@@ -136,7 +152,7 @@ function App() {
                 /> 
                 <button>Search</button>
                 <br/>
-                Returns top 6 results
+                Returns 6 results
             </form>
 
             {query &&
@@ -153,6 +169,35 @@ function App() {
                 )
             })}
 
+        </div>
+
+        <div id="marsAnchor"></div>
+
+        <div className="marsDiv">
+            <h1 className="marsTitle">Mars Rover Image Search</h1>
+
+            <form 
+                className="marsForm"
+                onSubmit={event => {
+                event.preventDefault();
+                marsSearch();}}>
+                <button>Search</button>
+                <br/>
+                Returns 24 results
+            </form>
+
+            {marsPhotos.map((photo, index) => {
+            return (
+                    <Mars 
+                        className={`mars${index}`}
+                        img={photo.img_src}
+                        key={photo.id}
+                        date={photo.earth_date}
+                        sol={photo.sol}
+                        camera={photo.camera.full_name}
+                    />
+                )
+            })}
         </div>
 
     </div>
