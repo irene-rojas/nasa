@@ -25,6 +25,9 @@ function App() {
     ]);
     // mars photos
     const [marsPhotos, setMarsPhotos] = useState([]);
+    const [rover, setRover] = useState("");
+    const [sol, setSol] = useState("");
+    const [camera, setCamera] = useState("");
 
     // API calls
     useEffect(() => {
@@ -73,13 +76,11 @@ function App() {
 
     // mars photos
     const marsSearch = () => {
-        axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=2400&camera=navcam&api_key=${process.env.REACT_APP_NASA_API}`)
+        axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=1000&camera=navcam&api_key=${process.env.REACT_APP_NASA_API}`)
         .then(res => {
             setMarsPhotos(res.data.photos.slice(0,24));
             console.log(res.data.photos.slice(0,24));
-            // endpoint testing
-            // console.log(res.data.photos[2].img_src);
-
+            console.log(rover);
         });
     };
 
@@ -176,14 +177,28 @@ function App() {
         <div className="marsDiv">
             <h1 className="marsTitle">Mars Rover Image Search</h1>
 
+
             <form 
                 className="marsForm"
                 onSubmit={event => {
                 event.preventDefault();
                 marsSearch();}}>
+
+                    <select 
+                        className="roverDropdown" 
+                        value={rover}
+                        onChange={event => {
+                            event.preventDefault();
+                            setRover(event.target.value);
+                        }}>
+                            <option value="curiosity">Curiosity</option>
+                            <option value="opportunity">Opportunity</option>
+                            <option value="spirit">Spirit</option>
+                    </select>
+
                 <button>Search</button>
                 <br/>
-                Returns 24 results
+                Returns 24 results if available
             </form>
 
             {marsPhotos.map((photo, index) => {
