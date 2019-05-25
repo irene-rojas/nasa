@@ -180,13 +180,13 @@ function App() {
         <div className="marsDiv">
             <h1 className="marsTitle">Mars Rover Image Search</h1>
 
-            <div>
-                <form 
+            <div className="marsForm">
+                {/* <form 
                     className="selectRover"
                     onSubmit={event => {
                         event.preventDefault();
                         marsSearch();}}
-                    >
+                    > */}
 
                     <select 
                         className="roverDropdown" 
@@ -257,9 +257,14 @@ function App() {
                         </select>
                     }
 
-                    <button type="submit">Search</button>
+                    <button                     
+                        onClick={event => {
+                            event.preventDefault();
+                            marsSearch();}}
+                    >
+                    Search</button>
 
-                </form>
+                {/* </form> */}
 
             </div>
 

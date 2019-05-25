@@ -169,7 +169,7 @@ img {
         grid-column: 2/5;
         /* in marsDiv */
         display: grid;
-        grid-template-rows: repeat(4, auto);
+        grid-template-rows: repeat(5, auto);
         grid-template-columns: repeat(3, 1fr);
         margin-bottom: 100px;
     }
