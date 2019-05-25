@@ -76,7 +76,7 @@ function App() {
 
     // mars photos
     const marsSearch = () => {
-        axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=500&camera=navcam&api_key=${process.env.REACT_APP_NASA_API}`)
+        axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=1000&camera=navcam&api_key=${process.env.REACT_APP_NASA_API}`)
         .then(res => {
             setMarsPhotos(res.data.photos.slice(0,24));
             console.log(res.data.photos.slice(0,24));
@@ -179,51 +179,72 @@ function App() {
         <div className="marsDiv">
             <h1 className="marsTitle">Mars Rover Image Search</h1>
 
-            <form 
-                className="marsForm"
-                onSubmit={event => {
-                event.preventDefault();
-                marsSearch();}}>
+            <form className="marsForm">
 
-                    <select 
-                        className="roverDropdown" 
-                        value={rover}
-                        onChange={event => {
-                            event.preventDefault();
-                            setRover(event.target.value);
-                        }}>
-                            <option>Select a rover</option>
-                            <option value="curiosity">Curiosity</option>
-                            <option value="opportunity">Opportunity</option>
-                            <option value="spirit">Spirit</option>
-                    </select>
+                <select 
+                    className="roverDropdown" 
+                    value={rover}
+                    onChange={event => {
+                        event.preventDefault();
+                        setRover(event.target.value);
+                    }}>
+                        <option>Select a rover</option>
+                        <option value="curiosity">Curiosity</option>
+                        <option value="opportunity">Opportunity</option>
+                        <option value="spirit">Spirit</option>
+                </select>
 
-                        <form>
-                        {/* dropdown for camera */}
-                        {rover === "curiosity" &&
-                            <select 
-                                className="cameraDropdown" 
-                                value={camera}
-                                onChange={event => {
-                                    event.preventDefault();
-                                    setCamera(event.target.value);
-                                }}>
-                                    <option value="fhaz">Front Hazard Avoidance Camera</option>
-                                    <option value="rhaz">Rear Hazard Avoidance Camera</option>
-                                    <option value="mast">Mast Camera</option>
-                                    <option value="chemcam">Chemistry and Camera Complex</option>
-                                    <option value="mahli">Mars Hand Lens Imager</option>
-                                    <option value="mardi">Mars Descent Imager</option>
-                                    <option value="navcam">Navigation Camera</option>
-                            </select>
-                        }
 
-                        </form>
                     {/* dropdown for sol */}
 
-                <button>Search</button>
+                {/* <button >Search</button> */}
                 <br/>
                 Returns 24 results if available
+            </form>
+
+            <form>
+                {/* dropdown for camera */}
+                {rover === "curiosity" &&
+                    <select 
+                        className="cameraDropdown" 
+                        value={camera}
+                        onChange={event => {
+                            event.preventDefault();
+                            setCamera(event.target.value);
+                        }}>
+                            <option value="fhaz">Front Hazard Avoidance Camera</option>
+                            <option value="rhaz">Rear Hazard Avoidance Camera</option>
+                            <option value="mast">Mast Camera</option>
+                            <option value="chemcam">Chemistry and Camera Complex</option>
+                            <option value="mahli">Mars Hand Lens Imager</option>
+                            <option value="mardi">Mars Descent Imager</option>
+                            <option value="navcam">Navigation Camera</option>
+                    </select>
+                }
+
+                {rover === "opportunity" &&
+                    <select 
+                        className="cameraDropdown" 
+                        value={camera}
+                        onChange={event => {
+                            event.preventDefault();
+                            setCamera(event.target.value);
+                        }}>
+                            <option value="fhaz">Front Hazard Avoidance Camera</option>
+                            <option value="rhaz">Rear Hazard Avoidance Camera</option>
+                            <option value="navcam">Panoramic Camera</option>
+                            <option value="pancam">Navigation Camera</option>
+                            <option value="minites">Miniature Thermal Emission Spectrometer (Mini-TES)	</option>
+                    </select>
+                }
+
+            </form>
+
+            <form
+                onSubmit={event => {
+                    event.preventDefault();
+                    marsSearch();}}>
+                <button>Search</button>
             </form>
 
             {marsPhotos.map((photo, index) => {
