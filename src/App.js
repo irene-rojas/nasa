@@ -83,7 +83,6 @@ function App() {
             console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=1000&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`);
             console.log(rover);
             console.log(camera);
-
         });
     };
 
@@ -181,27 +180,30 @@ function App() {
             <h1 className="marsTitle">Mars Rover Image Search</h1>
 
             <div className="marsForm">
-                {/* <form 
+                <form 
                     className="selectRover"
                     onSubmit={event => {
                         event.preventDefault();
                         marsSearch();}}
-                    > */}
+                    >
 
-                    <select 
-                        className="roverDropdown" 
-                        value={rover}
-                        onChange={event => {
-                            event.preventDefault();
-                            setRover(event.target.value);
-                        }}>
-                            <option>Select a rover</option>
-                            <option value="curiosity">Curiosity</option>
-                            <option value="opportunity">Opportunity</option>
-                            <option value="spirit">Spirit</option>
-                    </select>
+                    <div>
+                        <select 
+                            className="roverDropdown" 
+                            value={rover}
+                            onChange={event => {
+                                event.preventDefault();
+                                setRover(event.target.value);
+                            }}>
+                                <option>Select a rover</option>
+                                <option value="curiosity">Curiosity</option>
+                                <option value="opportunity">Opportunity</option>
+                                <option value="spirit">Spirit</option>
+                        </select>
+                    </div>
 
                     {rover === "curiosity" &&
+                    <div>
                         <select 
                             className="cameraDropdown" 
                             id="curiosityCameras"
@@ -219,9 +221,11 @@ function App() {
                                 <option value="MARDI">Mars Descent Imager</option>
                                 <option value="NAVCAM">Navigation Camera</option>
                         </select>
+                    </div>
                     }
 
                     {rover === "opportunity" &&
+                    <div>
                         <select 
                             className="cameraDropdown" 
                             id="opportunityCameras"
@@ -237,9 +241,11 @@ function App() {
                                 <option value="NAVCAM">Navigation Camera</option>
                                 <option value="MINITES">Miniature Thermal Emission Spectrometer (Mini-TES)	</option>
                         </select>
+                        </div>
                     }
 
                     {rover === "spirit" &&
+                    <div>
                     <select 
                         className="cameraDropdown" 
                         id="spiritCameras"
@@ -255,16 +261,18 @@ function App() {
                             <option value="PANCAM">Navigation Camera</option>
                             <option value="MINITES">Miniature Thermal Emission Spectrometer (Mini-TES)	</option>
                         </select>
+                        </div>
                     }
 
-                    <button                     
+                    {/* <button                     
                         onClick={event => {
                             event.preventDefault();
                             marsSearch();}}
-                    >
-                    Search</button>
+                    >Search</button> */}
 
-                {/* </form> */}
+                    <button>Search</button>
+
+                </form>
 
             </div>
 
