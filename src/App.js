@@ -197,7 +197,6 @@ function App() {
                             <option value="spirit">Spirit</option>
                     </select>
 
-
                 <button>Search</button>
                 <br/>
                 Returns 24 results if available
