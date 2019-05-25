@@ -80,13 +80,12 @@ function App() {
         .then(res => {
             setMarsPhotos(res.data.photos.slice(0,24));
             console.log(res.data.photos.slice(0,24));
+            console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=1000&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`);
             console.log(rover);
             console.log(camera);
 
         });
     };
-
-    // camera and sol depend on rover selection
 
 
   return (
@@ -187,7 +186,6 @@ function App() {
                     onSubmit={event => {
                         event.preventDefault();
                         marsSearch();}}
-
                     >
 
                     <select 
@@ -206,57 +204,60 @@ function App() {
                     {rover === "curiosity" &&
                         <select 
                             className="cameraDropdown" 
+                            id="curiosityCameras"
                             value={camera}
                             onChange={event => {
                                 event.preventDefault();
                                 setCamera(event.target.value);
                             }}>
                                 <option>Select a camera</option>
-                                <option value="fhaz">Front Hazard Avoidance Camera</option>
-                                <option value="rhaz">Rear Hazard Avoidance Camera</option>
-                                <option value="mast">Mast Camera</option>
-                                <option value="chemcam">Chemistry and Camera Complex</option>
-                                <option value="mahli">Mars Hand Lens Imager</option>
-                                <option value="mardi">Mars Descent Imager</option>
-                                <option value="navcam">Navigation Camera</option>
+                                <option value="FHAZ">Front Hazard Avoidance Camera</option>
+                                <option value="RHAZ">Rear Hazard Avoidance Camera</option>
+                                <option value="MAST">Mast Camera (Takes a moment)</option>
+                                <option value="CHEMCAM">Chemistry and Camera Complex</option>
+                                <option value="MAHLI">Mars Hand Lens Imager</option>
+                                <option value="MARDI">Mars Descent Imager</option>
+                                <option value="NAVCAM">Navigation Camera</option>
                         </select>
                     }
 
                     {rover === "opportunity" &&
                         <select 
                             className="cameraDropdown" 
+                            id="opportunityCameras"
                             value={camera}
                             onChange={event => {
                                 event.preventDefault();
                                 setCamera(event.target.value);
                             }}>
                                 <option>Select a camera</option>
-                                <option value="fhaz">Front Hazard Avoidance Camera</option>
-                                <option value="rhaz">Rear Hazard Avoidance Camera</option>
-                                <option value="pancam">Panoramic Camera</option>
-                                <option value="navcam">Navigation Camera</option>
-                                <option value="minites">Miniature Thermal Emission Spectrometer (Mini-TES)	</option>
+                                <option value="FHAZ">Front Hazard Avoidance Camera</option>
+                                <option value="RHAZ">Rear Hazard Avoidance Camera</option>
+                                <option value="PANCAM">Panoramic Camera</option>
+                                <option value="NAVCAM">Navigation Camera</option>
+                                <option value="MINITES">Miniature Thermal Emission Spectrometer (Mini-TES)	</option>
                         </select>
                     }
 
                     {rover === "spirit" &&
                     <select 
                         className="cameraDropdown" 
+                        id="spiritCameras"
                         value={camera}
                         onChange={event => {
                             event.preventDefault();
                             setCamera(event.target.value);
                         }}>
                             <option>Select a camera</option>
-                            <option value="fhaz">Front Hazard Avoidance Camera</option>
-                            <option value="rhaz">Rear Hazard Avoidance Camera</option>
-                            <option value="navcam">Panoramic Camera</option>
-                            <option value="pancam">Navigation Camera</option>
-                            <option value="minites">Miniature Thermal Emission Spectrometer (Mini-TES)	</option>
-                    </select>
-                }
+                            <option value="FHAZ">Front Hazard Avoidance Camera</option>
+                            <option value="RHAZ">Rear Hazard Avoidance Camera</option>
+                            <option value="NAVCAM">Panoramic Camera</option>
+                            <option value="PANCAM">Navigation Camera</option>
+                            <option value="MINITES">Miniature Thermal Emission Spectrometer (Mini-TES)	</option>
+                        </select>
+                    }
 
-                <button>Search</button>
+                    <button type="submit">Search</button>
 
                 </form>
 
