@@ -84,6 +84,8 @@ function App() {
             console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=1000&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`);
             console.log(rover);
             console.log(camera);
+            console.log(res.data.photos[0].rover.max_sol);
+
         });
     };
 
