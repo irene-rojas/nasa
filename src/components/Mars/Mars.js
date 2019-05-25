@@ -7,6 +7,8 @@ const Mars = (props) => {
         <div className="marsInfo">
             <img className="marsPhoto" src={props.img} alt={props.id}/>
             <br/>
+            Rover: {props.rover}
+            <br/>
             Taken: {props.date}
             <br/>
             Sol: {props.sol}

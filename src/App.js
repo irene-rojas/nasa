@@ -26,7 +26,8 @@ function App() {
     // mars photos
     const [marsPhotos, setMarsPhotos] = useState([]);
     const [rover, setRover] = useState("");
-    const [sol, setSol] = useState("");
+    // const [sol, setSol] = useState("");
+    // const [maxSol, setMaxSol] = "";
     const [camera, setCamera] = useState("");
 
     // API calls
@@ -76,11 +77,13 @@ function App() {
 
     // mars photos
     const marsSearch = () => {
-        axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=1000&camera=navcam&api_key=${process.env.REACT_APP_NASA_API}`)
+        axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=1000&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`)
         .then(res => {
             setMarsPhotos(res.data.photos.slice(0,24));
             console.log(res.data.photos.slice(0,24));
+            console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=1000&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`);
             console.log(rover);
+            console.log(camera);
         });
     };
 
@@ -153,7 +156,7 @@ function App() {
                 /> 
                 <button>Search</button>
                 <br/>
-                Returns 6 results
+                Returns 6 results if available
             </form>
 
             {query &&
@@ -177,35 +180,97 @@ function App() {
         <div className="marsDiv">
             <h1 className="marsTitle">Mars Rover Image Search</h1>
 
+            <div className="marsForm">
+                <form 
+                    className="selectRover"
+                    onSubmit={event => {
+                        event.preventDefault();
+                        marsSearch();}}
+                    >
 
-            <form 
-                className="marsForm"
-                onSubmit={event => {
-                event.preventDefault();
-                marsSearch();}}>
+                    <div>
+                        <select 
+                            className="roverDropdown" 
+                            value={rover}
+                            onChange={event => {
+                                event.preventDefault();
+                                setRover(event.target.value);
+                            }}>
+                                <option>Select a rover</option>
+                                <option value="curiosity">Curiosity</option>
+                                <option value="opportunity">Opportunity</option>
+                                <option value="spirit">Spirit</option>
+                        </select>
+                    </div>
 
+                    {rover === "curiosity" &&
+                    <div>
+                        <select 
+                            className="cameraDropdown" 
+                            id="curiosityCameras"
+                            value={camera}
+                            onChange={event => {
+                                event.preventDefault();
+                                setCamera(event.target.value);
+                            }}>
+                                <option>Select a camera</option>
+                                <option value="FHAZ">Front Hazard Avoidance Camera</option>
+                                <option value="RHAZ">Rear Hazard Avoidance Camera</option>
+                                <option value="MAST">Mast Camera (Takes a moment)</option>
+                                <option value="CHEMCAM">Chemistry and Camera Complex</option>
+                                <option value="NAVCAM">Navigation Camera</option>
+                        </select>
+                    </div>
+                    }
+                    {/* create loading animation for mast camera */}
+
+                    {rover === "opportunity" &&
+                    <div>
+                        <select 
+                            className="cameraDropdown" 
+                            id="opportunityCameras"
+                            value={camera}
+                            onChange={event => {
+                                event.preventDefault();
+                                setCamera(event.target.value);
+                            }}>
+                                <option>Select a camera</option>
+                                <option value="PANCAM">Panoramic Camera</option>
+                                <option value="NAVCAM">Navigation Camera</option>
+                        </select>
+                        </div>
+                    }
+
+                    {rover === "spirit" &&
+                    <div>
                     <select 
-                        className="roverDropdown" 
-                        value={rover}
+                        className="cameraDropdown" 
+                        id="spiritCameras"
+                        value={camera}
                         onChange={event => {
                             event.preventDefault();
-                            setRover(event.target.value);
+                            setCamera(event.target.value);
                         }}>
-                            <option value="curiosity">Curiosity</option>
-                            <option value="opportunity">Opportunity</option>
-                            <option value="spirit">Spirit</option>
-                    </select>
+                            <option>Select a camera</option>
+                            <option value="NAVCAM">Panoramic Camera</option>
+                            <option value="PANCAM">Navigation Camera</option>
+                        </select>
+                        </div>
+                    }
 
-                <button>Search</button>
-                <br/>
-                Returns 24 results if available
-            </form>
+                    {/* select sol */}
+
+                    <button>Search</button>
+
+                </form>
+            </div>
 
             {marsPhotos.map((photo, index) => {
             return (
                     <Mars 
                         className={`mars${index}`}
                         img={photo.img_src}
+                        rover={photo.rover.name}
                         key={photo.id}
                         date={photo.earth_date}
                         sol={photo.sol}
