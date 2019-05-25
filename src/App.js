@@ -26,7 +26,8 @@ function App() {
     // mars photos
     const [marsPhotos, setMarsPhotos] = useState([]);
     const [rover, setRover] = useState("");
-    // const [sol, setSol] = useState("");
+    const [sol, setSol] = useState("");
+    const [maxSol, setMaxSol] = "";
     const [camera, setCamera] = useState("");
 
     // API calls
@@ -83,6 +84,7 @@ function App() {
             console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=1000&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`);
             console.log(rover);
             console.log(camera);
+            setMaxSol(res.data.photos[0].rover.max_sol);
         });
     };
 
@@ -219,6 +221,14 @@ function App() {
                                 <option value="CHEMCAM">Chemistry and Camera Complex</option>
                                 <option value="NAVCAM">Navigation Camera</option>
                         </select>
+                        
+                        <input
+                            value={sol}
+                            onChange={event => {
+                                event.preventDefault();
+                                setSol(event.target.value);
+                            }}
+                            ></input>
                     </div>
                     }
                     {/* create loading animation for mast camera */}
@@ -256,6 +266,8 @@ function App() {
                         </select>
                         </div>
                     }
+
+                    {/* select sol */}
 
                     <button>Search</button>
 
