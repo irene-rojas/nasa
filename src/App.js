@@ -76,7 +76,7 @@ function App() {
 
     // mars photos
     const marsSearch = () => {
-        axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=1000&camera=navcam&api_key=${process.env.REACT_APP_NASA_API}`)
+        axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=1000&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`)
         .then(res => {
             setMarsPhotos(res.data.photos.slice(0,24));
             console.log(res.data.photos.slice(0,24));
@@ -196,6 +196,25 @@ function App() {
                             <option value="opportunity">Opportunity</option>
                             <option value="spirit">Spirit</option>
                     </select>
+
+                    {/* dropdown for camera */}
+                    {rover === "curiosity" &&
+                        <select 
+                            className="cameraDropdown" 
+                            value={camera}
+                            onChange={event => {
+                                event.preventDefault();
+                                setCamera(event.target.value);
+                            }}>
+                                <option value="fhaz">Front Hazard Avoidance Camera</option>
+                                <option value="rhaz">Rear Hazard Avoidance Camera</option>
+                                <option value="mast">Mast Camera</option>
+                                <option value="chemcam">Chemistry and Camera Complex</option>
+                                <option value="mardi">Mars Hand Lens Imager</option>
+                                <option value="navcam">Navigation Camera</option>
+                        </select>
+                    }
+                    {/* dropdown for sol */}
 
                 <button>Search</button>
                 <br/>
