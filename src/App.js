@@ -217,12 +217,11 @@ function App() {
                                 <option value="RHAZ">Rear Hazard Avoidance Camera</option>
                                 <option value="MAST">Mast Camera (Takes a moment)</option>
                                 <option value="CHEMCAM">Chemistry and Camera Complex</option>
-                                <option value="MAHLI">Mars Hand Lens Imager</option>
-                                <option value="MARDI">Mars Descent Imager</option>
                                 <option value="NAVCAM">Navigation Camera</option>
                         </select>
                     </div>
                     }
+                    {/* create loading animation for mast camera */}
 
                     {rover === "opportunity" &&
                     <div>
@@ -235,11 +234,8 @@ function App() {
                                 setCamera(event.target.value);
                             }}>
                                 <option>Select a camera</option>
-                                <option value="FHAZ">Front Hazard Avoidance Camera</option>
-                                <option value="RHAZ">Rear Hazard Avoidance Camera</option>
                                 <option value="PANCAM">Panoramic Camera</option>
                                 <option value="NAVCAM">Navigation Camera</option>
-                                <option value="MINITES">Miniature Thermal Emission Spectrometer (Mini-TES)	</option>
                         </select>
                         </div>
                     }
@@ -255,25 +251,15 @@ function App() {
                             setCamera(event.target.value);
                         }}>
                             <option>Select a camera</option>
-                            <option value="FHAZ">Front Hazard Avoidance Camera</option>
-                            <option value="RHAZ">Rear Hazard Avoidance Camera</option>
                             <option value="NAVCAM">Panoramic Camera</option>
                             <option value="PANCAM">Navigation Camera</option>
-                            <option value="MINITES">Miniature Thermal Emission Spectrometer (Mini-TES)	</option>
                         </select>
                         </div>
                     }
 
-                    {/* <button                     
-                        onClick={event => {
-                            event.preventDefault();
-                            marsSearch();}}
-                    >Search</button> */}
-
                     <button>Search</button>
 
                 </form>
-
             </div>
 
             {marsPhotos.map((photo, index) => {
