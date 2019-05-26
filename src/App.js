@@ -34,7 +34,7 @@ function App() {
     //     }
     // ]);
     const [camera, setCamera] = useState("");
-    // const [marsError, setMarsError] = useState(false);
+    const [marsError, setMarsError] = useState(false);
     // const [marsMastLoading, setMastLoading] = useState(false);
 
     // API calls
@@ -89,16 +89,12 @@ function App() {
             setMarsPhotos(res.data.photos.slice(0,24));
             console.log(res.data.photos.slice(0,24));
             console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`);
-            // console.log(rover);
-            // console.log(camera);
-            // console.log(sol);
             // console.log(res.data.photos[0].rover.max_sol);
+            if (!marsPhotos.array > 0) {
+                setMarsError(true);
+            }
         });
-        if (marsPhotos.length === 0) {
-            return (
-                <div>No data available for that sol date. Please enter another sol date.</div>
-            )
-        }
+
     };
 
 
@@ -319,20 +315,17 @@ function App() {
                             ></input>
 
                     </div>
-                    {/* error message if sol is not available. "Data not available for that sol. Please enter another sol." */}
                     {/* need to display max_sol */}
 
                     <button>Search</button>
 
                 </form>
 
-
-            </div>
-
-            {marsPhotos.length === 0 && 
+                {marsPhotos.length === 0 && marsError === true && 
                     <div>No data available for that sol date. Please enter another sol date.</div>
                 }
 
+            </div>
 
             {marsPhotos.map((photo, index) => {
             return (
