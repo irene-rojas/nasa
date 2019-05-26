@@ -34,7 +34,7 @@ function App() {
     //     }
     // ]);
     const [camera, setCamera] = useState("");
-    const [marsError, setMarsError] = useState(false);
+    // const [marsError, setMarsError] = useState(false);
     // const [marsMastLoading, setMastLoading] = useState(false);
 
     // API calls
@@ -83,40 +83,45 @@ function App() {
     }
 
     // mars photos backup
-    // const marsSearch = () => {
-    //     axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`)
-    //     .then(res => {
-    //         setMarsPhotos(res.data.photos.slice(0,24));
-    //         console.log(res.data.photos.slice(0,24));
-    //         console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`);
-    //         // console.log(rover);
-    //         // console.log(camera);
-    //         // console.log(sol);
-    //         // console.log(res.data.photos[0].rover.max_sol);
-    //     });
-    // };
-
-
     const marsSearch = () => {
-        setMarsError(false);
-        try {
-            axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`)
-            .then(res => {
-                setMarsPhotos(res.data.photos.slice(0,24));
-                console.log(res.data.photos.slice(0,24));
-                console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`);
-                // console.log(rover);
-                // console.log(camera);
-                // console.log(sol);
-                // console.log(res.data.photos[0].rover.max_sol);
-            });
-        }
-        catch (error) {
-            if (marsPhotos === []) {
-            setMarsError(true);
-            }
+        axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`)
+        .then(res => {
+            setMarsPhotos(res.data.photos.slice(0,24));
+            console.log(res.data.photos.slice(0,24));
+            console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`);
+            // console.log(rover);
+            // console.log(camera);
+            // console.log(sol);
+            // console.log(res.data.photos[0].rover.max_sol);
+        });
+        if (marsPhotos.length === 0) {
+            return (
+                <div>No data available for that sol date. Please enter another sol date.</div>
+            )
         }
     };
+
+
+    // const marsSearch = () => {
+    //     setMarsError(false);
+    //     try {
+    //         axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`)
+    //         .then(res => {
+    //             setMarsPhotos(res.data.photos.slice(0,24));
+    //             console.log(res.data.photos.slice(0,24));
+    //             console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`);
+    //             // console.log(rover);
+    //             // console.log(camera);
+    //             // console.log(sol);
+    //             // console.log(res.data.photos[0].rover.max_sol);
+    //         });
+    //     }
+    //     catch (error) {
+    //         if (marsPhotos === []) {
+    //         setMarsError(true);
+    //         }
+    //     }
+    // };
 
 
   return (
@@ -324,7 +329,7 @@ function App() {
 
             </div>
 
-            {marsError === true && 
+            {marsPhotos.length === 0 && 
                     <div>No data available for that sol date. Please enter another sol date.</div>
                 }
 
