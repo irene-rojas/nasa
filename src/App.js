@@ -119,7 +119,7 @@ function App() {
         <div id="apodAnchor"></div>
 
         <div className="photoDayDiv" id="photoDayDiv">
-            
+
             {photoDay.media_type === "photo" && 
             <PhotoDayPhoto 
                 copyright={photoDay.copyright}
@@ -212,7 +212,7 @@ function App() {
 
             <div className="marsForm">
                 <form 
-                    className="selectRover"
+                    className="selectMarsPhotos"
                     onSubmit={event => {
                         event.preventDefault();
                         marsSearch();}}
