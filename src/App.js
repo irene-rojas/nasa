@@ -27,7 +27,11 @@ function App() {
     const [marsPhotos, setMarsPhotos] = useState([]);
     const [rover, setRover] = useState("");
     // const [sol, setSol] = useState("");
-    const [maxSol, setMaxSol] = "";
+    const [maxSol, setMaxSol] = useState([
+        {
+            "maxSol": ""
+        }
+    ]);
     const [camera, setCamera] = useState("");
 
     // API calls
@@ -84,12 +88,22 @@ function App() {
             console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=1000&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`);
             // console.log(rover);
             // console.log(camera);
-            console.log(res.data.photos[0].rover.max_sol);
+            // console.log(res.data.photos[0].rover.max_sol);
+            setMaxSol(findMaxSol(res.data.photos.slice(0,24)));
         });
     };
 
-    function getMaxSol() {
-        
+    function findMaxSol(props) {
+        return (
+            props.filter(prop => 
+                prop.rover).map(prop => 
+                    (
+                        {
+                            "maxSol": prop.rover.max_sol
+                        }
+                    )
+                )
+        );
     }
 
 
