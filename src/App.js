@@ -81,20 +81,40 @@ function App() {
         );
     }
 
-    // mars photos
-    const marsSearch = () => {
-        axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`)
-        .then(res => {
-            setMarsPhotos(res.data.photos.slice(0,24));
-            console.log(res.data.photos.slice(0,24));
-            console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`);
-            // console.log(rover);
-            // console.log(camera);
-            // console.log(sol);
-            // console.log(res.data.photos[0].rover.max_sol);
-        });
-    };
+    // mars photos backup
+    // const marsSearch = () => {
+    //     axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`)
+    //     .then(res => {
+    //         setMarsPhotos(res.data.photos.slice(0,24));
+    //         console.log(res.data.photos.slice(0,24));
+    //         console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`);
+    //         // console.log(rover);
+    //         // console.log(camera);
+    //         // console.log(sol);
+    //         // console.log(res.data.photos[0].rover.max_sol);
+    //     });
+    // };
 
+
+    const marsSearch = () => {
+
+        setMarsError(false);
+        try {
+            axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`)
+            .then(res => {
+                setMarsPhotos(res.data.photos.slice(0,24));
+                console.log(res.data.photos.slice(0,24));
+                console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`);
+                // console.log(rover);
+                // console.log(camera);
+                // console.log(sol);
+                // console.log(res.data.photos[0].rover.max_sol);
+            });
+        }
+        catch(error) {
+            setMarsError(true);
+        }
+    };
 
 
 
@@ -297,6 +317,11 @@ function App() {
                     {/* need to display max_sol */}
 
                     <button>Search</button>
+
+                    {error & 
+                    <div>
+                        No data available for that sol date. Please enter another sol date. 
+                    </div>}
 
                 </form>
             </div>
