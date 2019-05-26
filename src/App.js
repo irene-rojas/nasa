@@ -111,11 +111,8 @@ function App() {
                 // console.log(res.data.photos[0].rover.max_sol);
             });
         }
-        catch (marsError) {
+        catch (error) {
             setMarsError(true);
-                return (
-                    <div>No data available for that sol date. Please enter another sol date.</div>
-                )
         }
     };
 
@@ -323,9 +320,7 @@ function App() {
                 </form>
 
                 {marsError === true && 
-                    <div className="marsErrorDiv">
-                        {marsError}
-                    </div>
+                    <div>No data available for that sol date. Please enter another sol date.</div>
                 }
 
             </div>
