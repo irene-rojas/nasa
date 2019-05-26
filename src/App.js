@@ -41,7 +41,7 @@ function App() {
         axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API}`)
         .then(res => {
             setPhotoDay(res.data);
-            console.log(res.data);
+            // console.log(res.data);
         });
         // near-earth objects
         axios.get(`https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${process.env.REACT_APP_NASA_API}`)
@@ -246,7 +246,7 @@ function App() {
                                 <option>Select a camera</option>
                                 <option value="FHAZ">Front Hazard Avoidance Camera</option>
                                 <option value="RHAZ">Rear Hazard Avoidance Camera</option>
-                                <option value="MAST">Mast Camera (Takes a moment)</option>
+                                <option value="MAST">Mast Camera (Takes time to load)</option>
                                 <option value="CHEMCAM">Chemistry and Camera Complex</option>
                                 <option value="NAVCAM">Navigation Camera</option>
                         </select>
@@ -290,7 +290,7 @@ function App() {
 
                     {/* select sol */}
                     <div>
-                        Enter sol (Mars date):
+                        Enter sol (Mars mission date):
                         <input 
                             type="text"
                             onChange={event => {
@@ -299,6 +299,8 @@ function App() {
                             }}
                             ></input>
                     </div>
+                    {/* error message if sol is not available. "Data not available for that sol. Please enter another sol." */}
+                    {/* need to display max_sol */}
 
                     <button>Search</button>
 
