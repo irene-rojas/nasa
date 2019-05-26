@@ -34,6 +34,8 @@ function App() {
     //     }
     // ]);
     const [camera, setCamera] = useState("");
+    const [marsError, setMarsError] = useState(false);
+    // const [marsMastLoading, setMastLoading] = useState(false);
 
     // API calls
     useEffect(() => {
@@ -41,7 +43,7 @@ function App() {
         axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API}`)
         .then(res => {
             setPhotoDay(res.data);
-            console.log(res.data);
+            // console.log(res.data);
         });
         // near-earth objects
         axios.get(`https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${process.env.REACT_APP_NASA_API}`)
@@ -80,29 +82,42 @@ function App() {
         );
     }
 
-    // mars photos
+    // mars photos backup
     const marsSearch = () => {
         axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`)
         .then(res => {
             setMarsPhotos(res.data.photos.slice(0,24));
             console.log(res.data.photos.slice(0,24));
             console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`);
-            // console.log(rover);
-            // console.log(camera);
-            // console.log(sol);
             // console.log(res.data.photos[0].rover.max_sol);
-            // confirmSol(res.data.photos.slice(0,24));
+            if (!marsPhotos.array > 0) {
+                setMarsError(true);
+            }
         });
+
     };
 
-    // function confirmSol(props) {
-    //     return (
-    //         props.filter(prop => 
-    //             prop.sol).map(prop => 
-    //                 setSol(prop.sol)
-    //             )
-    //     );
-    // }
+
+    // const marsSearch = () => {
+    //     setMarsError(false);
+    //     try {
+    //         axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`)
+    //         .then(res => {
+    //             setMarsPhotos(res.data.photos.slice(0,24));
+    //             console.log(res.data.photos.slice(0,24));
+    //             console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`);
+    //             // console.log(rover);
+    //             // console.log(camera);
+    //             // console.log(sol);
+    //             // console.log(res.data.photos[0].rover.max_sol);
+    //         });
+    //     }
+    //     catch (error) {
+    //         if (marsPhotos === []) {
+    //         setMarsError(true);
+    //         }
+    //     }
+    // };
 
 
   return (
@@ -246,7 +261,7 @@ function App() {
                                 <option>Select a camera</option>
                                 <option value="FHAZ">Front Hazard Avoidance Camera</option>
                                 <option value="RHAZ">Rear Hazard Avoidance Camera</option>
-                                <option value="MAST">Mast Camera (Takes a moment)</option>
+                                <option value="MAST">Mast Camera (Takes time to load)</option>
                                 <option value="CHEMCAM">Chemistry and Camera Complex</option>
                                 <option value="NAVCAM">Navigation Camera</option>
                         </select>
@@ -290,7 +305,7 @@ function App() {
 
                     {/* select sol */}
                     <div>
-                        Enter sol (Mars date):
+                        Enter sol (Mars mission date):
                         <input 
                             type="text"
                             onChange={event => {
@@ -298,13 +313,19 @@ function App() {
                             setSol(event.target.value);
                             }}
                             ></input>
+
                     </div>
+                    {/* need to display max_sol */}
 
                     <button>Search</button>
 
                 </form>
-            </div>
 
+                {marsPhotos.length === 0 && marsError === true && 
+                    <div>No data available for that sol date. Please enter another sol date.</div>
+                }
+
+            </div>
 
             {marsPhotos.map((photo, index) => {
             return (
@@ -318,7 +339,9 @@ function App() {
                         camera={photo.camera.full_name}
                     />
                 )
-            })}
+            })
+            }
+
         </div>
 
     </div>
