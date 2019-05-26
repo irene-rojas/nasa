@@ -81,27 +81,24 @@ function App() {
 
     // mars photos
     const marsSearch = () => {
-        axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=1000&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`)
+        axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`)
         .then(res => {
             setMarsPhotos(res.data.photos.slice(0,24));
             console.log(res.data.photos.slice(0,24));
-            console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=1000&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`);
+            console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`);
             // console.log(rover);
             // console.log(camera);
+            // console.log(sol);
             // console.log(res.data.photos[0].rover.max_sol);
-            // setMaxSol(findMaxSol(res.data.photos.slice(0,24)));
+            // confirmSol(res.data.photos.slice(0,24));
         });
     };
 
-    // function findMaxSol(props) {
+    // function confirmSol(props) {
     //     return (
     //         props.filter(prop => 
-    //             prop.rover).map(prop => 
-    //                 (
-    //                     {
-    //                         "maxSol": prop.rover.max_sol
-    //                     }
-    //                 )
+    //             prop.sol).map(prop => 
+    //                 setSol(prop.sol)
     //             )
     //     );
     // }
@@ -278,6 +275,16 @@ function App() {
                     }
 
                     {/* select sol */}
+                    <div>
+                        Enter sol (Mars date):
+                        <input 
+                            type="text"
+                            onChange={event => {
+                            event.preventDefault();
+                            setSol(event.target.value);
+                            }}
+                            ></input>
+                    </div>
 
                     <button>Search</button>
 
