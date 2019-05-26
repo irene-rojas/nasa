@@ -97,7 +97,6 @@ function App() {
 
 
     const marsSearch = () => {
-
         setMarsError(false);
         try {
             axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`)
@@ -111,8 +110,12 @@ function App() {
                 // console.log(res.data.photos[0].rover.max_sol);
             });
         }
-        catch(error) {
+        catch (marsError) {
             setMarsError(true);
+                return (
+                    <div>No data available for that sol date. Please enter another sol date.</div>
+                )
+
         }
     };
 
@@ -318,13 +321,13 @@ function App() {
 
                     <button>Search</button>
 
-                    {error & 
-                    <div>
-                        No data available for that sol date. Please enter another sol date. 
-                    </div>}
-
                 </form>
+
+                <div className="marsErrorDiv">
+                    {marsError}
+                </div>
             </div>
+
 
 
             {marsPhotos.map((photo, index) => {
@@ -341,6 +344,7 @@ function App() {
                 )
             })
             }
+
         </div>
 
     </div>
