@@ -92,16 +92,18 @@ function App() {
             // console.log(sol);
             // console.log(res.data.photos[0].rover.max_sol);
             // confirmSol(res.data.photos.slice(0,24));
+            // validateSol();
         });
     };
 
-    // function confirmSol(props) {
-    //     return (
-    //         props.filter(prop => 
-    //             prop.sol).map(prop => 
-    //                 setSol(prop.sol)
-    //             )
-    //     );
+    // function validateSol() {
+    //     if (!marsPhotos.sol) {
+    //         return (
+    //             <div>
+    //                 Please select another sol.
+    //             </div>
+    //         )
+    //     }
     // }
 
 
@@ -298,6 +300,7 @@ function App() {
                             setSol(event.target.value);
                             }}
                             ></input>
+
                     </div>
                     {/* error message if sol is not available. "Data not available for that sol. Please enter another sol." */}
                     {/* need to display max_sol */}
@@ -320,7 +323,8 @@ function App() {
                         camera={photo.camera.full_name}
                     />
                 )
-            })}
+            })
+            }
         </div>
 
     </div>
