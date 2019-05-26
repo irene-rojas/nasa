@@ -34,6 +34,7 @@ function App() {
     //     }
     // ]);
     const [camera, setCamera] = useState("");
+    const [marsError, setMarsError] = useState(false);
 
     // API calls
     useEffect(() => {
@@ -91,20 +92,10 @@ function App() {
             // console.log(camera);
             // console.log(sol);
             // console.log(res.data.photos[0].rover.max_sol);
-            // confirmSol(res.data.photos.slice(0,24));
-            // validateSol();
         });
     };
 
-    // function validateSol() {
-    //     if (!marsPhotos.sol) {
-    //         return (
-    //             <div>
-    //                 Please select another sol.
-    //             </div>
-    //         )
-    //     }
-    // }
+
 
 
   return (
