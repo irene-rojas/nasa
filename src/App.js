@@ -112,7 +112,9 @@ function App() {
             });
         }
         catch (error) {
+            if (marsPhotos === []) {
             setMarsError(true);
+            }
         }
     };
 
@@ -319,12 +321,12 @@ function App() {
 
                 </form>
 
-                {marsError === true && 
-                    <div>No data available for that sol date. Please enter another sol date.</div>
-                }
 
             </div>
 
+            {marsError === true && 
+                    <div>No data available for that sol date. Please enter another sol date.</div>
+                }
 
 
             {marsPhotos.map((photo, index) => {
