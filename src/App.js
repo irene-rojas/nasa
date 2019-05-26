@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
-import PhotoDay from "./components/PhotoDay/PhotoDay";
+import PhotoDayPhoto from "./components/PhotoDayPhoto/PhotoDayPhoto";
+import PhotoDayVideo from "./components/PhotoDayVideo/PhotoDayVideo";
 import NearEarth from "./components/NearEarth/NearEarth";
 import ImageSearch from "./components/ImageSearch/ImageSearch";
 import Mars from "./components/Mars/Mars";
@@ -40,7 +41,7 @@ function App() {
         axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API}`)
         .then(res => {
             setPhotoDay(res.data);
-            // console.log(res.data);
+            console.log(res.data);
         });
         // near-earth objects
         axios.get(`https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${process.env.REACT_APP_NASA_API}`)
@@ -118,13 +119,26 @@ function App() {
         <div id="apodAnchor"></div>
 
         <div className="photoDayDiv" id="photoDayDiv">
-            <PhotoDay 
+            
+            {photoDay.media_type === "photo" && 
+            <PhotoDayPhoto 
                 copyright={photoDay.copyright}
                 date={photoDay.date}
                 explanation={photoDay.explanation}
                 img={photoDay.hdurl}
                 title={photoDay.title}
             />
+            }
+
+            {photoDay.media_type === "video" && 
+            <PhotoDayVideo 
+                copyright={photoDay.copyright}
+                date={photoDay.date}
+                explanation={photoDay.explanation}
+                video={photoDay.url}
+                title={photoDay.title}
+            />
+            }
         </div>
 
         <div id="neoAnchor"></div>

@@ -1,7 +1,7 @@
 import React from 'react';
-import "./PhotoDay.css";
+import "./PhotoDayVideo.css";
 
-const PhotoDay = (props) => {
+const PhotoDayVideo = (props) => {
     return (
         <div className="photoInfo">
 
@@ -10,7 +10,12 @@ const PhotoDay = (props) => {
             <br/>
             <h3>{props.title}</h3>
             <br/>
-            <a href={props.img} target="_blank" rel="noopener noreferrer"><img className="apodImg" src={props.img} alt={props.title}/></a>
+            <iframe src={props.video}
+                frameBorder='0'
+                allow='encrypted-media'
+                allowFullScreen
+                title='video'
+            />
             <br/>
             Copyright: {props.copyright}
             <br/>
@@ -25,4 +30,4 @@ const PhotoDay = (props) => {
     )
 }
 
-export default PhotoDay;
+export default PhotoDayVideo;
