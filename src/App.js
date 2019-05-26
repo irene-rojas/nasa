@@ -26,12 +26,12 @@ function App() {
     // mars photos
     const [marsPhotos, setMarsPhotos] = useState([]);
     const [rover, setRover] = useState("");
-    // const [sol, setSol] = useState("");
-    const [maxSol, setMaxSol] = useState([
-        {
-            "maxSol": ""
-        }
-    ]);
+    const [sol, setSol] = useState("");
+    // const [maxSol, setMaxSol] = useState([
+    //     {
+    //         "maxSol": ""
+    //     }
+    // ]);
     const [camera, setCamera] = useState("");
 
     // API calls
@@ -89,22 +89,22 @@ function App() {
             // console.log(rover);
             // console.log(camera);
             // console.log(res.data.photos[0].rover.max_sol);
-            setMaxSol(findMaxSol(res.data.photos.slice(0,24)));
+            // setMaxSol(findMaxSol(res.data.photos.slice(0,24)));
         });
     };
 
-    function findMaxSol(props) {
-        return (
-            props.filter(prop => 
-                prop.rover).map(prop => 
-                    (
-                        {
-                            "maxSol": prop.rover.max_sol
-                        }
-                    )
-                )
-        );
-    }
+    // function findMaxSol(props) {
+    //     return (
+    //         props.filter(prop => 
+    //             prop.rover).map(prop => 
+    //                 (
+    //                     {
+    //                         "maxSol": prop.rover.max_sol
+    //                     }
+    //                 )
+    //             )
+    //     );
+    // }
 
 
   return (
