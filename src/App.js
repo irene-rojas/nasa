@@ -35,6 +35,7 @@ function App() {
     // ]);
     const [camera, setCamera] = useState("");
     const [marsError, setMarsError] = useState(false);
+    // const [marsMastLoading, setMastLoading] = useState(false);
 
     // API calls
     useEffect(() => {
@@ -115,10 +116,8 @@ function App() {
                 return (
                     <div>No data available for that sol date. Please enter another sol date.</div>
                 )
-
         }
     };
-
 
 
   return (
@@ -323,9 +322,12 @@ function App() {
 
                 </form>
 
-                <div className="marsErrorDiv">
-                    {marsError}
-                </div>
+                {marsError === true && 
+                    <div className="marsErrorDiv">
+                        {marsError}
+                    </div>
+                }
+
             </div>
 
 
