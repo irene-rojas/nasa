@@ -297,9 +297,10 @@ function App() {
 
                     {/* need to display max_sol relative to selected rover. SEE MISSION MANIFEST */}
                     {/* hide this until rover selected */}
-                    <div>
+                    {maxSol &&
+                        <div>
                         Enter sol (Mars mission date) between 0 and {maxSol}:
-
+                        <br/>
                         <input 
                             type="text"
                             onChange={event => {
@@ -308,6 +309,8 @@ function App() {
                             }}
                             ></input>
                     </div>
+                    }
+
 
                     <button>Search</button>
 
