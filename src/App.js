@@ -89,7 +89,7 @@ function App() {
             setMarsPhotos(res.data.photos.slice(0,24));
             console.log(res.data.photos.slice(0,24));
             console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`);
-            console.log(res.data.photos[0].rover.max_sol);
+            // console.log(res.data.photos[0].rover.max_sol);
             setMaxSol(findMaxSol(res.data.photos.slice(0,2)));
             if (!marsPhotos.length > 0) {
                 setMarsError(true);
@@ -98,13 +98,16 @@ function App() {
     };
 
     function findMaxSol(props) {
-        props.map(prop => 
-            (
-                {
-                    "maxSol": prop.rover.max_sol
-                }
-            )
-        )
+        return (
+            props.filter(prop =>
+                prop.rover).map(prop =>
+                    (
+                        {
+                            "maxSol": prop.rover.max_sol
+                        }
+                    )
+                )
+        );
     }
 
   return (
@@ -293,7 +296,7 @@ function App() {
                         </div>
                     }
 
-                    {/* need to display max_sol */}
+                    {/* need to display max_sol relative to selected rover */}
                     <div>
                         Enter sol (Mars mission date) between 0 and XXX:
 
