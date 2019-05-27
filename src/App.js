@@ -305,18 +305,18 @@ function App() {
             </div>
 
             {marsPhotos.map((photo, index) => {
-            return (
-                    <Mars 
-                        className={`mars${index}`}
-                        img={photo.img_src}
-                        rover={photo.rover.name}
-                        key={photo.id}
-                        date={photo.earth_date}
-                        sol={photo.sol}
-                        camera={photo.camera.full_name}
-                    />
-                )
-            })
+                return (
+                        <Mars 
+                            className={`mars${index}`}
+                            img={photo.img_src}
+                            rover={photo.rover.name}
+                            key={photo.id}
+                            date={photo.earth_date}
+                            sol={photo.sol}
+                            camera={photo.camera.full_name}
+                        />
+                    )
+                })
             }
 
         </div>
