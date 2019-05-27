@@ -90,23 +90,20 @@ function App() {
             setMarsPhotos(res.data.photos.slice(0,24));
             console.log(res.data.photos.slice(0,24));
             console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`);
-            console.log(res.data.photos[0].rover.max_sol);
-            setMaxSol(findMaxSol(res.data.photos.slice(0,1)));
+            // console.log(res.data.photos[0].rover.max_sol);
             if (!marsPhotos.length > 0) {
                 setMarsError(true);
             }
         });
     };
 
-    function findMaxSol(props) {
-        return (
-            props.filter(prop =>
-                prop.rover).map(prop =>
-
-                    prop.rover.max_sol
-
-                )
-        );
+    // this needs to run before marsSearch
+    function findMaxSol() {
+        axios.get(`https://api.nasa.gov/mars-photos/api/v1/manifests/${rover}?&api_key=${process.env.REACT_APP_NASA_API}`)
+        .then(res => {
+            setMaxSol(res.data.photo_manifest.max_sol);
+            console.log(res.data.photo_manifest.max_sol);
+        })
     }
 
   return (
@@ -249,6 +246,7 @@ function App() {
                                 onChange={event => {
                                     event.preventDefault();
                                     setCamera(event.target.value);
+                                    findMaxSol();
                                 }}>
                                     <option>Select a camera</option>
                                     <option value="FHAZ">Front Hazard Avoidance Camera</option>
@@ -270,6 +268,7 @@ function App() {
                                 onChange={event => {
                                     event.preventDefault();
                                     setCamera(event.target.value);
+                                    findMaxSol();
                                 }}>
                                     <option>Select a camera</option>
                                     <option value="PANCAM">Panoramic Camera</option>
@@ -287,6 +286,7 @@ function App() {
                                 onChange={event => {
                                     event.preventDefault();
                                     setCamera(event.target.value);
+                                    findMaxSol();
                                 }}>
                                     <option>Select a camera</option>
                                     <option value="NAVCAM">Panoramic Camera</option>
@@ -295,7 +295,7 @@ function App() {
                         </div>
                     }
 
-                    {/* need to display max_sol relative to selected rover */}
+                    {/* need to display max_sol relative to selected rover. SEE MISSION MANIFEST */}
                     {/* hide this until rover selected */}
                     <div>
                         Enter sol (Mars mission date) between 0 and {maxSol}:
