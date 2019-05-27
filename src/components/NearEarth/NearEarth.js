@@ -3,10 +3,9 @@ import "./NearEarth.css";
 
 const NearEarth = (props) => {
     return (
+
         <div className="nearEarthInfo">
-
             <h3>Name: {props.name}</h3>
-
             Hazardous: {props.hazardous}
             <br/>
             Absolute magnitude: {props.magnitude}
@@ -32,8 +31,8 @@ const NearEarth = (props) => {
             <br/>
             <br/>
             JPL URL: <a href={props.jplUrl} target="_blank" rel="noopener noreferrer">{props.jplUrl}</a>
-
         </div>
+        
     )
 }
 

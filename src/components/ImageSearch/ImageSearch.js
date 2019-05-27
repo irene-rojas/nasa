@@ -15,7 +15,6 @@ const ImageSearch = (props) => {
             Date created: {props.date}
             <br/>
             NASA ID: {props.id}
-
         </div>
 
     )

@@ -6,7 +6,6 @@ import PhotoDayVideo from "./components/PhotoDayVideo/PhotoDayVideo";
 import NearEarth from "./components/NearEarth/NearEarth";
 import ImageSearch from "./components/ImageSearch/ImageSearch";
 import Mars from "./components/Mars/Mars";
-// import MaxSol from "./components/MaxSol/MaxSol";
 
 function App() {
 
@@ -29,11 +28,6 @@ function App() {
     const [marsPhotos, setMarsPhotos] = useState([]);
     const [rover, setRover] = useState("");
     const [sol, setSol] = useState("");
-    // const [maxSol, setMaxSol] = useState([
-    //     {
-    //         "maxSol": ""
-    //     }
-    // ]);
     const [maxSol, setMaxSol] = useState("");
     const [camera, setCamera] = useState("");
     const [marsError, setMarsError] = useState(false);
@@ -44,7 +38,7 @@ function App() {
         axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API}`)
         .then(res => {
             setPhotoDay(res.data);
-            console.log(res.data);
+            // console.log(res.data);
         });
         // near-earth objects
         axios.get(`https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${process.env.REACT_APP_NASA_API}`)
@@ -61,7 +55,7 @@ function App() {
         axios.get(`https://images-api.nasa.gov/search?q=${query}`)
         .then(res => {
             setData(transformImgSearch(res.data.collection.items.slice(0,6)));
-            console.log(res.data.collection.items.slice(0,6));
+            // console.log(res.data.collection.items.slice(0,6));
         });
     };
 
@@ -88,9 +82,7 @@ function App() {
         axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`)
         .then(res => {
             setMarsPhotos(res.data.photos.slice(0,24));
-            console.log(res.data.photos.slice(0,24));
-            console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`);
-            // console.log(res.data.photos[0].rover.max_sol);
+            // console.log(res.data.photos.slice(0,24));
             if (!marsPhotos.length > 0) {
                 setMarsError(true);
             }
@@ -102,7 +94,7 @@ function App() {
         axios.get(`https://api.nasa.gov/mars-photos/api/v1/manifests/${rover}?&api_key=${process.env.REACT_APP_NASA_API}`)
         .then(res => {
             setMaxSol(res.data.photo_manifest.max_sol);
-            console.log(res.data.photo_manifest.max_sol);
+            // console.log(res.data.photo_manifest.max_sol);
         })
     }
 
@@ -296,7 +288,7 @@ function App() {
                         </div>
                     }
 
-                    {maxSol !== "" &&
+                    {maxSol !== "" && rover &&
                         <div>
                         Enter sol (Mars mission date) between 0 and {maxSol}:
                         <br/>
