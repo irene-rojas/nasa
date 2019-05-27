@@ -295,8 +295,6 @@ function App() {
                         </div>
                     }
 
-                    {/* need to display max_sol relative to selected rover. SEE MISSION MANIFEST */}
-                    {/* hide this until rover selected */}
                     {maxSol &&
                         <div>
                         Enter sol (Mars mission date) between 0 and {maxSol}:
