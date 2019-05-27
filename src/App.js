@@ -29,11 +29,12 @@ function App() {
     const [marsPhotos, setMarsPhotos] = useState([]);
     const [rover, setRover] = useState("");
     const [sol, setSol] = useState("");
-    const [maxSol, setMaxSol] = useState([
-        {
-            "maxSol": ""
-        }
-    ]);
+    // const [maxSol, setMaxSol] = useState([
+    //     {
+    //         "maxSol": ""
+    //     }
+    // ]);
+    const [maxSol, setMaxSol] = useState("");
     const [camera, setCamera] = useState("");
     const [marsError, setMarsError] = useState(false);
 
@@ -89,8 +90,8 @@ function App() {
             setMarsPhotos(res.data.photos.slice(0,24));
             console.log(res.data.photos.slice(0,24));
             console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`);
-            // console.log(res.data.photos[0].rover.max_sol);
-            setMaxSol(findMaxSol(res.data.photos.slice(0,2)));
+            console.log(res.data.photos[0].rover.max_sol);
+            setMaxSol(findMaxSol(res.data.photos.slice(0,1)));
             if (!marsPhotos.length > 0) {
                 setMarsError(true);
             }
@@ -101,11 +102,9 @@ function App() {
         return (
             props.filter(prop =>
                 prop.rover).map(prop =>
-                    (
-                        {
-                            "maxSol": prop.rover.max_sol
-                        }
-                    )
+
+                    prop.rover.max_sol
+
                 )
         );
     }
@@ -297,8 +296,9 @@ function App() {
                     }
 
                     {/* need to display max_sol relative to selected rover */}
+                    {/* hide this until rover selected */}
                     <div>
-                        Enter sol (Mars mission date) between 0 and XXX:
+                        Enter sol (Mars mission date) between 0 and {maxSol}:
 
                         <input 
                             type="text"
