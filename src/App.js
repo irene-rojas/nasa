@@ -103,13 +103,11 @@ function App() {
 
         <div className="header">
             <h1 className="masterTitle"><a href="#top">Exploring the NASA Open API Universe</a></h1>
-            <div className="apodMenu"><a href="#apodAnchor">Astronomy Picture of the Day</a></div>
-            <div className="neoMenu"><a href="#neoAnchor">Near-Earth Ojects</a></div>
+            <div className="apodMenu"><a href="#photoDayDiv">Astronomy Picture of the Day</a></div>
+            <div className="neoMenu"><a href="#nearEarthDiv">Near-Earth Ojects</a></div>
             <div className="searchMenu"><a href="#imageSearchDiv">NASA Image Archive Search</a></div>
-            <div className="marsMenu"><a href="#marsAnchor">Mars Rover Photos</a></div>
+            <div className="marsMenu"><a href="#marsDiv">Mars Rover Photos</a></div>
         </div>
-
-        <div id="apodAnchor"></div>
 
         {/* photo of day */}
         <div className="photoDayDiv" id="photoDayDiv">
@@ -135,8 +133,6 @@ function App() {
             }
         </div>
 
-        <div id="neoAnchor"></div>
-
         {/* near earth objects */}
         <div className="nearEarthDiv" id="nearEarthDiv">
             <h1 className="neoTitle">Near-Earth Objects</h1>
@@ -161,8 +157,6 @@ function App() {
                 )
             })}
         </div>
-
-        <div id="imageSearchAnchor"></div>
 
         {/* image search */}
         <div className="imageSearchDiv" id="imageSearchDiv">
@@ -201,10 +195,8 @@ function App() {
 
         </div>
 
-        <div id="marsAnchor"></div>
-
         {/* mars search */}
-        <div className="marsDiv">
+        <div className="marsDiv" id="marsDiv">
             <h1 className="marsTitle">Mars Rover Image Search</h1>
 
             <div className="marsForm">
