@@ -28,11 +28,7 @@ function App() {
     const [marsPhotos, setMarsPhotos] = useState([]);
     const [rover, setRover] = useState("");
     const [sol, setSol] = useState("");
-    // const [maxSol, setMaxSol] = useState([
-    //     {
-    //         "maxSol": ""
-    //     }
-    // ]);
+    const [maxSol, setMaxSol] = useState("");
     const [camera, setCamera] = useState("");
     const [marsError, setMarsError] = useState(false);
 
@@ -49,7 +45,7 @@ function App() {
         .then(res => {
             // only save first 3 items in array
             setNeo(res.data.near_earth_objects.slice(0,3));
-            console.log(res.data.near_earth_objects.slice(0,3));
+            // console.log(res.data.near_earth_objects.slice(0,3));
         });
     }, []);
     // [] tells it to run just once
@@ -59,7 +55,7 @@ function App() {
         axios.get(`https://images-api.nasa.gov/search?q=${query}`)
         .then(res => {
             setData(transformImgSearch(res.data.collection.items.slice(0,6)));
-            console.log(res.data.collection.items.slice(0,6));
+            // console.log(res.data.collection.items.slice(0,6));
         });
     };
 
@@ -86,15 +82,21 @@ function App() {
         axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`)
         .then(res => {
             setMarsPhotos(res.data.photos.slice(0,24));
-            console.log(res.data.photos.slice(0,24));
-            console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`);
-            // console.log(res.data.photos[0].rover.max_sol);
+            // console.log(res.data.photos.slice(0,24));
             if (!marsPhotos.length > 0) {
                 setMarsError(true);
             }
         });
     };
 
+    // this needs to run before marsSearch
+    function findMaxSol() {
+        axios.get(`https://api.nasa.gov/mars-photos/api/v1/manifests/${rover}?&api_key=${process.env.REACT_APP_NASA_API}`)
+        .then(res => {
+            setMaxSol(res.data.photo_manifest.max_sol);
+            // console.log(res.data.photo_manifest.max_sol);
+        })
+    }
 
   return (
     <div className="App" id="top">
@@ -112,7 +114,7 @@ function App() {
         {/* photo of day */}
         <div className="photoDayDiv" id="photoDayDiv">
 
-            {photoDay.media_type === "photo" && 
+            {photoDay.media_type === "image" && 
             <PhotoDayPhoto 
                 copyright={photoDay.copyright}
                 date={photoDay.date}
@@ -219,6 +221,7 @@ function App() {
                             onChange={event => {
                                 event.preventDefault();
                                 setRover(event.target.value);
+                                setMaxSol("");
                             }}>
                                 <option>Select a rover</option>
                                 <option value="curiosity">Curiosity</option>
@@ -236,6 +239,7 @@ function App() {
                                 onChange={event => {
                                     event.preventDefault();
                                     setCamera(event.target.value);
+                                    findMaxSol();
                                 }}>
                                     <option>Select a camera</option>
                                     <option value="FHAZ">Front Hazard Avoidance Camera</option>
@@ -257,6 +261,7 @@ function App() {
                                 onChange={event => {
                                     event.preventDefault();
                                     setCamera(event.target.value);
+                                    findMaxSol();
                                 }}>
                                     <option>Select a camera</option>
                                     <option value="PANCAM">Panoramic Camera</option>
@@ -274,6 +279,7 @@ function App() {
                                 onChange={event => {
                                     event.preventDefault();
                                     setCamera(event.target.value);
+                                    findMaxSol();
                                 }}>
                                     <option>Select a camera</option>
                                     <option value="NAVCAM">Panoramic Camera</option>
@@ -282,9 +288,10 @@ function App() {
                         </div>
                     }
 
-                    {/* need to display max_sol */}
-                    <div>
-                        Enter sol (Mars mission date) between 0 and XXX:
+                    {maxSol !== "" && rover &&
+                        <div>
+                        Enter sol (Mars mission date) between 0 and {maxSol}:
+                        <br/>
                         <input 
                             type="text"
                             onChange={event => {
@@ -293,6 +300,8 @@ function App() {
                             }}
                             ></input>
                     </div>
+                    }
+
 
                     <button>Search</button>
 
@@ -305,18 +314,18 @@ function App() {
             </div>
 
             {marsPhotos.map((photo, index) => {
-            return (
-                    <Mars 
-                        className={`mars${index}`}
-                        img={photo.img_src}
-                        rover={photo.rover.name}
-                        key={photo.id}
-                        date={photo.earth_date}
-                        sol={photo.sol}
-                        camera={photo.camera.full_name}
-                    />
-                )
-            })
+                return (
+                        <Mars 
+                            className={`mars${index}`}
+                            img={photo.img_src}
+                            rover={photo.rover.name}
+                            key={photo.id}
+                            date={photo.earth_date}
+                            sol={photo.sol}
+                            camera={photo.camera.full_name}
+                        />
+                    )
+                })
             }
 
         </div>

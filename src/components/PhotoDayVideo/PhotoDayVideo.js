@@ -3,8 +3,8 @@ import "./PhotoDayVideo.css";
 
 const PhotoDayVideo = (props) => {
     return (
-        <div className="photoInfo">
 
+        <div className="photoInfo">
             <h1 className="photoTitle">Astronomy Picture of the Day</h1>
             Date: {props.date}
             <br/>
@@ -27,6 +27,7 @@ const PhotoDayVideo = (props) => {
             <br/>
             <a href="https://apod.nasa.gov/apod/archivepix.html" target="_blank" rel="noopener noreferrer">Archive</a>
         </div>
+        
     )
 }
 
