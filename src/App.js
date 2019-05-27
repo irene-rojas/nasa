@@ -299,7 +299,7 @@ function App() {
                 </form>
 
                 {marsPhotos.length === 0 && marsError === true && 
-                    <div className="noSol">No data available for that sol date. Please enter another sol date.</div>
+                    <div className="noPhotos">No data available for that sol date. Please enter another sol date.</div>
                 }
 
             </div>
