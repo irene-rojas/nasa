@@ -35,7 +35,6 @@ function App() {
     // ]);
     const [camera, setCamera] = useState("");
     const [marsError, setMarsError] = useState(false);
-    // const [marsMastLoading, setMastLoading] = useState(false);
 
     // API calls
     useEffect(() => {
@@ -82,7 +81,7 @@ function App() {
         );
     }
 
-    // mars photos backup
+    // mars photos
     const marsSearch = () => {
         axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`)
         .then(res => {
@@ -90,34 +89,11 @@ function App() {
             console.log(res.data.photos.slice(0,24));
             console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`);
             // console.log(res.data.photos[0].rover.max_sol);
-            if (!marsPhotos.array > 0) {
+            if (!marsPhotos.length > 0) {
                 setMarsError(true);
             }
         });
-
     };
-
-
-    // const marsSearch = () => {
-    //     setMarsError(false);
-    //     try {
-    //         axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`)
-    //         .then(res => {
-    //             setMarsPhotos(res.data.photos.slice(0,24));
-    //             console.log(res.data.photos.slice(0,24));
-    //             console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`);
-    //             // console.log(rover);
-    //             // console.log(camera);
-    //             // console.log(sol);
-    //             // console.log(res.data.photos[0].rover.max_sol);
-    //         });
-    //     }
-    //     catch (error) {
-    //         if (marsPhotos === []) {
-    //         setMarsError(true);
-    //         }
-    //     }
-    // };
 
 
   return (
@@ -133,6 +109,7 @@ function App() {
 
         <div id="apodAnchor"></div>
 
+        {/* photo of day */}
         <div className="photoDayDiv" id="photoDayDiv">
 
             {photoDay.media_type === "photo" && 
@@ -158,6 +135,7 @@ function App() {
 
         <div id="neoAnchor"></div>
 
+        {/* near earth objects */}
         <div className="nearEarthDiv" id="nearEarthDiv">
             <h1 className="neoTitle">Near-Earth Objects</h1>
 
@@ -184,6 +162,7 @@ function App() {
 
         <div id="imageSearchAnchor"></div>
 
+        {/* image search */}
         <div className="imageSearchDiv" id="imageSearchDiv">
             <h1 className="searchTitle">Search the NASA Image Archive</h1>
 
@@ -222,6 +201,7 @@ function App() {
 
         <div id="marsAnchor"></div>
 
+        {/* mars search */}
         <div className="marsDiv">
             <h1 className="marsTitle">Mars Rover Image Search</h1>
 
@@ -230,8 +210,7 @@ function App() {
                     className="selectMarsPhotos"
                     onSubmit={event => {
                         event.preventDefault();
-                        marsSearch();}}
-                    >
+                        marsSearch();}}>
 
                     <div>
                         <select 
@@ -249,63 +228,63 @@ function App() {
                     </div>
 
                     {rover === "curiosity" &&
-                    <div>
-                        <select 
-                            className="cameraDropdown" 
-                            id="curiosityCameras"
-                            value={camera}
-                            onChange={event => {
-                                event.preventDefault();
-                                setCamera(event.target.value);
-                            }}>
-                                <option>Select a camera</option>
-                                <option value="FHAZ">Front Hazard Avoidance Camera</option>
-                                <option value="RHAZ">Rear Hazard Avoidance Camera</option>
-                                <option value="MAST">Mast Camera (Takes time to load)</option>
-                                <option value="CHEMCAM">Chemistry and Camera Complex</option>
-                                <option value="NAVCAM">Navigation Camera</option>
-                        </select>
-                    </div>
+                        <div>
+                            <select 
+                                className="cameraDropdown" 
+                                id="curiosityCameras"
+                                value={camera}
+                                onChange={event => {
+                                    event.preventDefault();
+                                    setCamera(event.target.value);
+                                }}>
+                                    <option>Select a camera</option>
+                                    <option value="FHAZ">Front Hazard Avoidance Camera</option>
+                                    <option value="RHAZ">Rear Hazard Avoidance Camera</option>
+                                    <option value="MAST">Mast Camera (Takes time to load)</option>
+                                    <option value="CHEMCAM">Chemistry and Camera Complex</option>
+                                    <option value="NAVCAM">Navigation Camera</option>
+                            </select>
+                        </div>
                     }
                     {/* create loading animation for mast camera */}
 
                     {rover === "opportunity" &&
-                    <div>
-                        <select 
-                            className="cameraDropdown" 
-                            id="opportunityCameras"
-                            value={camera}
-                            onChange={event => {
-                                event.preventDefault();
-                                setCamera(event.target.value);
-                            }}>
-                                <option>Select a camera</option>
-                                <option value="PANCAM">Panoramic Camera</option>
-                                <option value="NAVCAM">Navigation Camera</option>
-                        </select>
+                        <div>
+                            <select 
+                                className="cameraDropdown" 
+                                id="opportunityCameras"
+                                value={camera}
+                                onChange={event => {
+                                    event.preventDefault();
+                                    setCamera(event.target.value);
+                                }}>
+                                    <option>Select a camera</option>
+                                    <option value="PANCAM">Panoramic Camera</option>
+                                    <option value="NAVCAM">Navigation Camera</option>
+                            </select>
                         </div>
                     }
 
                     {rover === "spirit" &&
-                    <div>
-                    <select 
-                        className="cameraDropdown" 
-                        id="spiritCameras"
-                        value={camera}
-                        onChange={event => {
-                            event.preventDefault();
-                            setCamera(event.target.value);
-                        }}>
-                            <option>Select a camera</option>
-                            <option value="NAVCAM">Panoramic Camera</option>
-                            <option value="PANCAM">Navigation Camera</option>
-                        </select>
+                        <div>
+                            <select 
+                                className="cameraDropdown" 
+                                id="spiritCameras"
+                                value={camera}
+                                onChange={event => {
+                                    event.preventDefault();
+                                    setCamera(event.target.value);
+                                }}>
+                                    <option>Select a camera</option>
+                                    <option value="NAVCAM">Panoramic Camera</option>
+                                    <option value="PANCAM">Navigation Camera</option>
+                            </select>
                         </div>
                     }
 
-                    {/* select sol */}
+                    {/* need to display max_sol */}
                     <div>
-                        Enter sol (Mars mission date):
+                        Enter sol (Mars mission date) between 0 and XXX:
                         <input 
                             type="text"
                             onChange={event => {
@@ -313,16 +292,14 @@ function App() {
                             setSol(event.target.value);
                             }}
                             ></input>
-
                     </div>
-                    {/* need to display max_sol */}
 
                     <button>Search</button>
 
                 </form>
 
                 {marsPhotos.length === 0 && marsError === true && 
-                    <div>No data available for that sol date. Please enter another sol date.</div>
+                    <div className="noSol">No data available for that sol date. Please enter another sol date.</div>
                 }
 
             </div>
