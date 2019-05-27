@@ -51,7 +51,7 @@ function App() {
         .then(res => {
             // only save first 3 items in array
             setNeo(res.data.near_earth_objects.slice(0,3));
-            console.log(res.data.near_earth_objects.slice(0,3));
+            // console.log(res.data.near_earth_objects.slice(0,3));
         });
     }, []);
     // [] tells it to run just once
@@ -229,6 +229,7 @@ function App() {
                             onChange={event => {
                                 event.preventDefault();
                                 setRover(event.target.value);
+                                setMaxSol("");
                             }}>
                                 <option>Select a rover</option>
                                 <option value="curiosity">Curiosity</option>
@@ -295,7 +296,7 @@ function App() {
                         </div>
                     }
 
-                    {maxSol &&
+                    {maxSol !== "" &&
                         <div>
                         Enter sol (Mars mission date) between 0 and {maxSol}:
                         <br/>
