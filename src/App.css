@@ -19,15 +19,11 @@ img {
         text-align: center;
         height: 100vh;
         display: grid;
-        grid-template-rows: 90px 30px 1fr 30px 1fr 30px 1fr 30px 1fr;
+        grid-template-rows: 90px 1fr 1fr  1fr 1fr;
         /* 90px = header */
-        /* 30px = apodAnchor */
         /* 1fr = photoDayDiv */
-        /* 30px = neoAnchor */
         /* 1fr = nearEarthDiv */
-        /* 30px = imageSearchAnchor */
         /* 1fr = imageSearchDiv */
-        /* 30px = marsAnchor */
         /* 1fr = marsDiv */
         grid-template-columns: 75px repeat(3, auto) 75px;
     }
@@ -39,16 +35,14 @@ img {
         /* in header */
         display: grid;
         grid-template-rows: repeat(2, auto);
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: 1fr;
         background-color: #000000;
         color: white;
         text-align: center;
-        top: 0;
+        top: 0px;
         position: fixed;
-        position: sticky;
-        position: -webkit-sticky;
-        z-index: 100;
         padding: 5px;
+        width: 100%;
     }
 
     .masterTitle {
@@ -58,56 +52,30 @@ img {
         text-align: center;
     }
 
-    .apodMenu {
+    .poweredBy {
         /* in header */
         grid-row: 2/3;
-        grid-column: 2/3;
+        grid-column: 1/-1;
+        text-align: center;
     }
 
-    .neoMenu {
-        /* in header */
-        grid-row: 2/3;
-        grid-column: 3/4;
-    }
-
-    .searchMenu {
-        /* in header */
-        grid-row: 2/3;
-        grid-column: 4/5;
-    }
-    
-    .marsMenu {
-        /* in header */
-        grid-row: 2/3;
-        grid-column: 5/6;
-    }
-
-    #apodAnchor {
-        /* in App */
-        grid-row: 2/3;
-        grid-column: 2/5;
-    }
 
     .photoDayDiv {
         /* in App */
-        grid-row: 3/4;
+        grid-row: 2/3;
         grid-column: 2/5;
     }
 
-    #neoAnchor {
-        /* in App */
-        grid-row: 4/5;
-        grid-column: 2/5;
-    }
 
     .nearEarthDiv {
         /* in App */
-        grid-row: 5/6;
+        grid-row: 3/4;
         grid-column: 2/5;
         /* in nearEarthDiv */
         display: grid;
         grid-template-rows: auto 1fr;
         grid-template-columns: repeat(3, 1fr);
+        margin-top: 20px;
     }
 
     .neoTitle {
@@ -136,17 +104,13 @@ img {
         grid-column: 3/4;
     }
 
-    #imageSearchAnchor {
-        /* in App */
-        grid-row: 6/7;
-        grid-column: 2/5;
-    }
 
     .imageSearchDiv {
         /* in App */
-        grid-row: 7/8;
+        grid-row: 4/5;
         grid-column: 2/5;
         padding: 20px 20px 40px 20px;
+        margin-top: 20px;
     }
 
     .searchTitle {
@@ -157,21 +121,17 @@ img {
         padding: 10px;
     }
 
-    .marsAnchor {
-        /* in App */
-        grid-row: 8/9;
-        grid-column: 2/5;
-    }
 
     .marsDiv {
         /* in App */
-        grid-row: 9/10;
+        grid-row: 5/6;
         grid-column: 2/5;
         /* in marsDiv */
         display: grid;
         grid-template-rows: repeat(5, auto);
         grid-template-columns: repeat(3, 1fr);
         margin-bottom: 100px;
+        margin-top: 20px;
     }
 
     .marsTitle {
@@ -187,7 +147,5 @@ img {
         grid-row: 2/3;
         grid-column: 1/-1;
     }
-
-    
 
 }
