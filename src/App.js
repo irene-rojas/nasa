@@ -104,7 +104,7 @@ function App() {
 
         <div className="header">
             <h1 className="masterTitle"><a href="#top">Exploring the NASA Open API Universe</a></h1>
-            <div className="poweredBy">Powered by <a href="https://api.nasa.gov/index.html">NASA APIs</a></div>
+            <div className="poweredBy">Powered by <a href="https://api.nasa.gov/index.html" target="_blank" rel="noopener noreferrer">NASA APIs</a></div>
         </div>
 
         {/* photo of day */}
@@ -288,12 +288,15 @@ function App() {
                             event.preventDefault();
                             setSol(event.target.value);
                             }}
-                            ></input>
+                            >
+                        </input>
+                        <br/>
+                        <button>Search</button>
+
                     </div>
                     }
 
 
-                    <button>Search</button>
 
                 </form>
 

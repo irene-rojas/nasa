@@ -12,6 +12,13 @@ h1, h3 {
 }
 
 .apodImg {
-    width: 500px;
+    width: 600px;
     box-shadow: 0 0 10px black;
+}
+
+@media (max-width: 768px) {
+    .apodImg {
+        width: 300px;
+        box-shadow: 0 0 10px black;
+    }
 }
