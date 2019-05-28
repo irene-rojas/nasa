@@ -35,7 +35,7 @@ img {
         /* in header */
         display: grid;
         grid-template-rows: repeat(2, auto);
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: 1fr;
         background-color: #000000;
         color: white;
         text-align: center;
@@ -64,7 +64,6 @@ img {
         /* in App */
         grid-row: 2/3;
         grid-column: 2/5;
-        /* margin-top: 30px; */
     }
 
 
@@ -148,7 +147,5 @@ img {
         grid-row: 2/3;
         grid-column: 1/-1;
     }
-
-    
 
 }
