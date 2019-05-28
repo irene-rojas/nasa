@@ -89,7 +89,6 @@ function App() {
         });
     };
 
-    // this needs to run before marsSearch
     function findMaxSol() {
         axios.get(`https://api.nasa.gov/mars-photos/api/v1/manifests/${rover}?&api_key=${process.env.REACT_APP_NASA_API}`)
         .then(res => {
@@ -240,7 +239,6 @@ function App() {
                             </select>
                         </div>
                     }
-                    {/* create loading animation for mast camera */}
 
                     {rover === "opportunity" &&
                         <div>
@@ -296,12 +294,12 @@ function App() {
                     </div>
                     }
 
-
-
                 </form>
 
                 {marsPhotos.length === 0 && marsError === true && 
-                    <div className="noPhotos">No data available for that sol date. Please enter another sol date.</div>
+                    <div className="noPhotos">
+                        No data available for that sol date. Please enter another sol date.
+                    </div>
                 }
 
             </div>

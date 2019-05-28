@@ -12,7 +12,6 @@ img {
     box-shadow: 0 0 10px black;
 }
 
-
 /* start mobile */
 @media (max-width: 768px) {
 
@@ -25,7 +24,7 @@ img {
         text-align: center;
         height: 100vh;
         display: grid;
-        grid-template-rows: 100px 1fr 1fr  1fr 1fr;
+        grid-template-rows: 100px repeat(4, 1fr);
         /* 100px = header */
         /* 1fr = photoDayDiv */
         /* 1fr = nearEarthDiv */
@@ -158,11 +157,6 @@ img {
 /* end mobile */
 
 
-
-
-
-
-
 /* start desktop */
 @media (min-width: 769px) {
 
@@ -170,7 +164,7 @@ img {
         text-align: center;
         height: 100vh;
         display: grid;
-        grid-template-rows: 90px 1fr 1fr  1fr 1fr;
+        grid-template-rows: 90px repeat(4, 1fr);
         /* 90px = header */
         /* 1fr = photoDayDiv */
         /* 1fr = nearEarthDiv */
