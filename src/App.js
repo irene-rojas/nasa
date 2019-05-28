@@ -98,15 +98,13 @@ function App() {
         })
     }
 
+
   return (
     <div className="App" id="top">
 
         <div className="header">
             <h1 className="masterTitle"><a href="#top">Exploring the NASA Open API Universe</a></h1>
-            <div className="apodMenu"><a href="#photoDayDiv">Astronomy Picture of the Day</a></div>
-            <div className="neoMenu"><a href="#nearEarthDiv">Near-Earth Ojects</a></div>
-            <div className="searchMenu"><a href="#imageSearchDiv">NASA Image Archive Search</a></div>
-            <div className="marsMenu"><a href="#marsDiv">Mars Rover Photos</a></div>
+            <div className="poweredBy">Powered by <a href="https://api.nasa.gov/index.html">NASA APIs</a></div>
         </div>
 
         {/* photo of day */}
