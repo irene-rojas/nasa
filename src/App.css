@@ -12,14 +12,159 @@ img {
     box-shadow: 0 0 10px black;
 }
 
-/* start desktop */
-@media (min-width: 768px) {
+/* start mobile */
+@media (max-width: 768px) {
+
+    button, .roverDropdown, .cameraDropdown {
+        border: 1px solid black;
+        border-radius: 5px;
+    }
 
     .App {
         text-align: center;
         height: 100vh;
         display: grid;
-        grid-template-rows: 90px 1fr 1fr  1fr 1fr;
+        grid-template-rows: 100px repeat(4, 1fr);
+        /* 100px = header */
+        /* 1fr = photoDayDiv */
+        /* 1fr = nearEarthDiv */
+        /* 1fr = imageSearchDiv */
+        /* 1fr = marsDiv */
+        grid-template-columns: 20px 1fr 20px;
+    }
+
+    .header {
+        /* in App */
+        grid-row: 1/2;
+        grid-column: 1/-1;
+        /* in header */
+        display: grid;
+        grid-template-rows: repeat(2, auto);
+        grid-template-columns: 1fr;
+        background-color: #000000;
+        color: white;
+        text-align: center;
+        top: 0px;
+        position: fixed;
+        padding: 5px;
+    }
+
+    .masterTitle {
+        /* in header */
+        grid-row: 1/2;
+        grid-column: 1/-1;
+        text-align: center;
+    }
+
+    .poweredBy {
+        /* in header */
+        grid-row: 2/3;
+        grid-column: 1/-1;
+        text-align: center;
+    }
+
+
+    .photoDayDiv {
+        /* in App */
+        grid-row: 2/3;
+        grid-column: 2/3;
+        margin-top: 10px;
+    }
+
+
+    .nearEarthDiv {
+        /* in App */
+        grid-row: 3/4;
+        grid-column: 2/3;
+        /* in nearEarthDiv */
+        display: grid;
+        grid-template-rows: auto repeat(3, 1fr);
+        grid-template-columns: 1fr;
+        margin-top: 20px;
+    }
+
+    .neoTitle {
+        /* in nearEarthDiv */
+        grid-row: 1/2;
+        grid-column: 1/-1;
+        border-bottom: 2px solid black;
+        padding: 5px;
+    }
+
+    .neoDiv0 {
+        /* in nearEarthDiv */
+        grid-row: 2/3;
+        grid-column: 1/-1;
+    }
+
+    .neoDiv1 {
+        /* in nearEarthDiv */
+        grid-row: 3/4;
+        grid-column: 1/-1;
+    }
+
+    .neoDiv2 {
+        /* in nearEarthDiv */
+        grid-row: 4/5;
+        grid-column: 1/-1;
+    }
+
+
+    .imageSearchDiv {
+        /* in App */
+        grid-row: 4/5;
+        grid-column: 2/3;
+        padding: 20px 20px 40px 20px;
+        margin-top: 20px;
+    }
+
+    .searchTitle {
+        border-bottom: 2px solid black;
+    }
+
+    .imageSearchForm {
+        padding: 10px;
+    }
+
+
+    .marsDiv {
+        /* in App */
+        grid-row: 5/6;
+        grid-column: 2/3;
+        /* in marsDiv */
+        display: grid;
+        grid-template-rows: repeat(5, auto);
+        grid-template-columns: 1fr;
+        margin-bottom: 100px;
+        margin-top: 20px;
+    }
+
+    .marsTitle {
+        /* in marsDiv */
+        grid-row: 1/2;
+        grid-column: 1/-1;
+        border-bottom: 2px solid black;
+        padding: 5px;
+    }
+
+    .marsForm {
+        /* in marsDiv */
+        grid-row: 2/3;
+        grid-column: 1/-1;
+    }
+
+}
+/* end mobile */
+
+
+/* start desktop */
+@media (min-width: 769px) {
+
+    .App {
+        text-align: center;
+        height: 100vh;
+        display: grid;
+        grid-template-rows: 90px repeat(4, 1fr);
         /* 90px = header */
         /* 1fr = photoDayDiv */
         /* 1fr = nearEarthDiv */
@@ -149,3 +294,4 @@ img {
     }
 
 }
+/* end desktop */
