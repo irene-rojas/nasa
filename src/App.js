@@ -6,6 +6,7 @@ import PhotoDayVideo from "./components/PhotoDayVideo/PhotoDayVideo";
 import NearEarth from "./components/NearEarth/NearEarth";
 import ImageSearch from "./components/ImageSearch/ImageSearch";
 import Mars from "./components/Mars/Mars";
+import nasaLogo from "./nasa_logo.png";
 
 function App() {
 
@@ -103,7 +104,11 @@ function App() {
 
         <div className="header">
             <h1 className="masterTitle"><a href="#top">Exploring the NASA Open API Universe</a></h1>
-            <div className="poweredBy">Powered by <a href="https://api.nasa.gov/index.html" target="_blank" rel="noopener noreferrer">NASA APIs</a></div>
+            <div className="poweredBy">Powered by<a href="https://api.nasa.gov/index.html" target="_blank" rel="noopener noreferrer">
+                <div>
+                    <img src={nasaLogo} alt="nasa_logo" width="40px"/>
+                </div>
+            </a></div>
             <nav className="navbar">
                 <a href="#photoDayDiv" id="apodNav">Astronomy Photo of the Day</a>
                 <a href="#nearEarthDiv" id="neoNav">Near-Earth Objects</a>
