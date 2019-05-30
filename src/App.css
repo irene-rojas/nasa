@@ -202,7 +202,7 @@ img {
         grid-column: 1/-1;
         text-align: center;
         border-bottom: 1px solid white;
-        padding: 5px;
+        padding: 5px 0px 10px 0px;
     }
 
     .navbar {
@@ -214,7 +214,7 @@ img {
         display: grid;
         grid-template-rows: auto;
         grid-template-columns: repeat(6, auto);
-        padding: 5px;
+        padding: 10px 0px 5px 0px;
     }
 
     #apodNav {
