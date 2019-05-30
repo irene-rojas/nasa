@@ -12,6 +12,7 @@ img {
     box-shadow: 0 0 10px black;
 }
 
+
 /* start mobile */
 @media (max-width: 768px) {
 
@@ -24,8 +25,8 @@ img {
         text-align: center;
         height: 100vh;
         display: grid;
-        grid-template-rows: 100px repeat(4, 1fr);
-        /* 100px = header */
+        grid-template-rows: 140px repeat(4, 1fr);
+        /* 140px = header */
         /* 1fr = photoDayDiv */
         /* 1fr = nearEarthDiv */
         /* 1fr = imageSearchDiv */
@@ -47,6 +48,7 @@ img {
         top: 0px;
         position: fixed;
         padding: 5px;
+        box-shadow: 0 0 10px black;
     }
 
     .masterTitle {
@@ -61,13 +63,33 @@ img {
         grid-row: 2/3;
         grid-column: 1/-1;
         text-align: center;
-        margin: auto;
+        padding: 5px;
+        /* in poweredBy */
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: repeat(2, auto);
+    }
+
+    .poweredText {
+        /* in poweredBy */
+        grid-row: 1/2;
+        grid-column: 1/2;
+        text-align: right;
+        padding-right: 5px;
+    }
+
+    .logoDiv {
+        /* in poweredBy */
+        grid-row: 1/2;
+        grid-column: 2/3;
+        text-align: left;
     }
 
     .navbar {
         display: none;
     }
 
+    /* ---- */
 
     .photoDayDiv {
         /* in App */
@@ -75,6 +97,7 @@ img {
         grid-column: 2/3;
     }
 
+    /* ---- */
 
     .nearEarthDiv {
         /* in App */
@@ -113,12 +136,12 @@ img {
         grid-column: 1/-1;
     }
 
+    /* ---- */
 
     .imageSearchDiv {
         /* in App */
         grid-row: 4/5;
         grid-column: 2/3;
-        padding: 20px 20px 40px 20px;
         margin-top: 20px;
     }
 
@@ -130,6 +153,7 @@ img {
         padding: 10px;
     }
 
+    /* ---- */
 
     .marsDiv {
         /* in App */
@@ -262,6 +286,7 @@ img {
         grid-column: 5/6;
     }
 
+    /* ---- */
 
     .photoDayDiv {
         /* in App */
@@ -276,6 +301,7 @@ img {
         border-bottom: 2px solid black;
     }
 
+    /* ---- */
 
     .nearEarthDiv {
         /* in App */
@@ -315,6 +341,7 @@ img {
         grid-column: 3/4;
     }
 
+    /* ---- */
 
     .imageSearchDiv {
         /* in App */
@@ -333,6 +360,7 @@ img {
         padding: 10px;
     }
 
+    /* ---- */
 
     .marsDiv {
         /* in App */
