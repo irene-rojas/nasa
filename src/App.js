@@ -104,11 +104,15 @@ function App() {
 
         <div className="header">
             <h1 className="masterTitle"><a href="#top">Exploring the NASA Open API Universe</a></h1>
-            <div className="poweredBy">Powered by<a href="https://api.nasa.gov/index.html" target="_blank" rel="noopener noreferrer">
-                <div>
-                    <img src={nasaLogo} alt="nasa_logo" width="40px"/>
+            <div className="poweredBy">
+                <div className="poweredText">Powered by</div>
+                
+                <div className="logoDiv">
+                    <a href="https://api.nasa.gov/index.html" target="_blank" rel="noopener noreferrer">
+                        <img src={nasaLogo} alt="nasa_logo" width="30px"/>
+                    </a>
                 </div>
-            </a></div>
+            </div>
             <nav className="navbar">
                 <a href="#photoDayDiv" id="apodNav">Astronomy Photo of the Day</a>
                 <a href="#nearEarthDiv" id="neoNav">Near-Earth Objects</a>
