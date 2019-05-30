@@ -6,7 +6,9 @@ const PhotoDayPhoto = (props) => {
 
         <div className="photoInfo">
             <br/>
-            <a href={props.img} target="_blank" rel="noopener noreferrer"><img className="apodImg" src={props.img} alt={props.title}/></a>
+            <a href={props.img} target="_blank" rel="noopener noreferrer">
+                <img className="apodImg" src={props.img} alt={props.title}/>
+            </a>
             <br/>
             <h3>{props.title}</h3>
             Date: {props.date}

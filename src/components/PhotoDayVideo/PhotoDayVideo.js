@@ -5,9 +5,6 @@ const PhotoDayVideo = (props) => {
     return (
 
         <div className="videoInfo">
-            Date: {props.date}
-            <br/>
-            <h3>{props.title}</h3>
             <br/>
             <iframe src={props.video}
                 frameBorder='0'
@@ -16,10 +13,14 @@ const PhotoDayVideo = (props) => {
                 title='video'
             />
             <br/>
-            Copyright: {props.copyright}
+            <h3>{props.title}</h3>
+            Date: {props.date}
             <br/>
             <br/>
             {props.explanation}
+            <br/>
+            <br/>
+            Copyright: {props.copyright}
             <br/>
             <br/>
             <a href="https://apod.nasa.gov/apod/astropix.html" target="_blank" rel="noopener noreferrer">Official NASA APOD Page</a>
