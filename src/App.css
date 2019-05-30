@@ -68,7 +68,6 @@ img {
         /* in App */
         grid-row: 2/3;
         grid-column: 2/3;
-        margin-top: 10px;
     }
 
 
@@ -171,6 +170,7 @@ img {
         /* 1fr = imageSearchDiv */
         /* 1fr = marsDiv */
         grid-template-columns: 75px repeat(3, auto) 75px;
+        scroll-snap-type: y mandatory;
     }
 
     .header {
@@ -243,6 +243,7 @@ img {
         /* in App */
         grid-row: 2/3;
         grid-column: 2/5;
+        scroll-snap-align: start;
     }
 
 
@@ -255,6 +256,7 @@ img {
         grid-template-rows: auto 1fr;
         grid-template-columns: repeat(3, 1fr);
         margin-top: 50px;
+        scroll-snap-align: start;
     }
 
     .neoTitle {
@@ -290,6 +292,7 @@ img {
         grid-column: 2/5;
         padding: 20px 20px 40px 20px;
         margin-top: 20px;
+        scroll-snap-align: start;
     }
 
     .searchTitle {
@@ -311,6 +314,7 @@ img {
         grid-template-columns: repeat(3, 1fr);
         margin-bottom: 100px;
         margin-top: 20px;
+        scroll-snap-align: start;
     }
 
     .marsTitle {

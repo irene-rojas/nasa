@@ -4,7 +4,7 @@ import "./PhotoDayVideo.css";
 const PhotoDayVideo = (props) => {
     return (
 
-        <div className="photoInfo">
+        <div className="videoInfo">
             <h1 className="photoTitle">Astronomy Picture of the Day</h1>
             Date: {props.date}
             <br/>
