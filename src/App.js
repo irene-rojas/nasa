@@ -6,6 +6,7 @@ import PhotoDayVideo from "./components/PhotoDayVideo/PhotoDayVideo";
 import NearEarth from "./components/NearEarth/NearEarth";
 import ImageSearch from "./components/ImageSearch/ImageSearch";
 import Mars from "./components/Mars/Mars";
+import nasaLogo from "./nasa_logo.png";
 
 function App() {
 
@@ -38,7 +39,7 @@ function App() {
         axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API}`)
         .then(res => {
             setPhotoDay(res.data);
-            // console.log(res.data);
+            console.log(res.data);
         });
         // near-earth objects
         axios.get(`https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${process.env.REACT_APP_NASA_API}`)
@@ -82,7 +83,7 @@ function App() {
         axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`)
         .then(res => {
             setMarsPhotos(res.data.photos.slice(0,24));
-            console.log(res.data.photos.slice(0,24));
+            // console.log(res.data.photos.slice(0,24));
             if (!marsPhotos.length > 0) {
                 setMarsError(true);
             }
@@ -103,11 +104,27 @@ function App() {
 
         <div className="header">
             <h1 className="masterTitle"><a href="#top">Exploring the NASA Open API Universe</a></h1>
-            <div className="poweredBy">Powered by <a href="https://api.nasa.gov/index.html" target="_blank" rel="noopener noreferrer">NASA APIs</a></div>
+            <div className="poweredBy">
+                <div className="poweredText">Powered by</div>
+                
+                <div className="logoDiv">
+                    <a href="https://api.nasa.gov/index.html" target="_blank" rel="noopener noreferrer">
+                        <img src={nasaLogo} alt="nasa_logo" width="30px"/>
+                    </a>
+                </div>
+            </div>
+            <nav className="navbar">
+                <a href="#photoDayDiv" id="apodNav">Astronomy Photo of the Day</a>
+                <a href="#nearEarthDiv" id="neoNav">Near-Earth Objects</a>
+                <a href="#imageSearchDiv" id="imageNav">Image Search</a>
+                <a href="#marsDiv" id="marsNav">Mars Rover Image Search</a>
+            </nav>
         </div>
 
         {/* photo of day */}
         <div className="photoDayDiv" id="photoDayDiv">
+            <h1 className="photoTitle">Astronomy Picture of the Day</h1>
+
 
             {photoDay.media_type === "image" && 
             <PhotoDayPhoto 
