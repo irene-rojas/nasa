@@ -5,7 +5,6 @@ const PhotoDayPhoto = (props) => {
     return (
 
         <div className="photoInfo">
-            <h1 className="photoTitle">Astronomy Picture of the Day</h1>
             <br/>
             <a href={props.img} target="_blank" rel="noopener noreferrer"><img className="apodImg" src={props.img} alt={props.title}/></a>
             <br/>

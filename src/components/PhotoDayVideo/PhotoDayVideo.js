@@ -5,7 +5,6 @@ const PhotoDayVideo = (props) => {
     return (
 
         <div className="videoInfo">
-            <h1 className="photoTitle">Astronomy Picture of the Day</h1>
             Date: {props.date}
             <br/>
             <h3>{props.title}</h3>

@@ -114,6 +114,8 @@ function App() {
 
         {/* photo of day */}
         <div className="photoDayDiv" id="photoDayDiv">
+            <h1 className="photoTitle">Astronomy Picture of the Day</h1>
+
 
             {photoDay.media_type === "image" && 
             <PhotoDayPhoto 

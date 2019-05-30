@@ -163,14 +163,13 @@ img {
         text-align: center;
         height: 100vh;
         display: grid;
-        grid-template-rows: 120px repeat(4, 1fr);
+        grid-template-rows: 100px repeat(4, 1fr);
         /* 100px = header */
         /* 1fr = photoDayDiv */
         /* 1fr = nearEarthDiv */
         /* 1fr = imageSearchDiv */
         /* 1fr = marsDiv */
         grid-template-columns: 75px repeat(3, auto) 75px;
-        scroll-snap-type: y mandatory;
     }
 
     .header {
@@ -243,7 +242,12 @@ img {
         /* in App */
         grid-row: 2/3;
         grid-column: 2/5;
-        scroll-snap-align: start;
+        padding-top: 50px;
+    }
+
+    .photoTitle {
+        padding: 5px;
+        border-bottom: 2px solid black;
     }
 
 
@@ -255,8 +259,7 @@ img {
         display: grid;
         grid-template-rows: auto 1fr;
         grid-template-columns: repeat(3, 1fr);
-        margin-top: 50px;
-        scroll-snap-align: start;
+        padding-top: 50px;
     }
 
     .neoTitle {
@@ -291,8 +294,7 @@ img {
         grid-row: 4/5;
         grid-column: 2/5;
         padding: 20px 20px 40px 20px;
-        margin-top: 20px;
-        scroll-snap-align: start;
+        padding-top: 50px;
     }
 
     .searchTitle {
@@ -313,8 +315,7 @@ img {
         grid-template-rows: repeat(5, auto);
         grid-template-columns: repeat(3, 1fr);
         margin-bottom: 100px;
-        margin-top: 20px;
-        scroll-snap-align: start;
+        padding-top: 50px;
     }
 
     .marsTitle {
