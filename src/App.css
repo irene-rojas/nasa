@@ -202,6 +202,8 @@ img {
         grid-row: 2/3;
         grid-column: 1/-1;
         text-align: center;
+        border-bottom: 1px solid white;
+        padding: 5px;
     }
 
     .navbar {
@@ -212,7 +214,7 @@ img {
         /* in navbar */
         display: grid;
         grid-template-rows: auto;
-        grid-template-columns: repeat(6, 1rf);
+        grid-template-columns: repeat(6, 1fr);
         padding: 5px;
     }
 
