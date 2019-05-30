@@ -165,7 +165,7 @@ img {
         height: 100vh;
         display: grid;
         grid-template-rows: 120px repeat(4, 1fr);
-        /* 90px = header */
+        /* 100px = header */
         /* 1fr = photoDayDiv */
         /* 1fr = nearEarthDiv */
         /* 1fr = imageSearchDiv */
@@ -254,7 +254,7 @@ img {
         display: grid;
         grid-template-rows: auto 1fr;
         grid-template-columns: repeat(3, 1fr);
-        margin-top: 20px;
+        margin-top: 50px;
     }
 
     .neoTitle {
