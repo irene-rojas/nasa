@@ -104,6 +104,12 @@ function App() {
         <div className="header">
             <h1 className="masterTitle"><a href="#top">Exploring the NASA Open API Universe</a></h1>
             <div className="poweredBy">Powered by <a href="https://api.nasa.gov/index.html" target="_blank" rel="noopener noreferrer">NASA APIs</a></div>
+            <nav className="navbar">
+                <a href="#photoDayDiv" id="apodNav">APOD</a>
+                <a href="#nearEarthDiv" id="neoNav">Near-Earth Objects</a>
+                <a href="#imageSearchDiv" id="imageNav">Image Search</a>
+                <a href="#marsDiv" id="marsNav">Mars Rover Image Search</a>
+            </nav>
         </div>
 
         {/* photo of day */}
