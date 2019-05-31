@@ -114,7 +114,7 @@ function App() {
                 </div>
             </div>
             <nav className="navbar">
-                <a href="#photoDayDiv" id="apodNav">Astronomy Photo of the Day</a>
+                <a href="#photoDayDiv" id="apodNav">Astronomy Picture of the Day</a>
                 <a href="#nearEarthDiv" id="neoNav">Near-Earth Objects</a>
                 <a href="#imageSearchDiv" id="imageNav">Image Search</a>
                 <a href="#marsDiv" id="marsNav">Mars Rover Image Search</a>
