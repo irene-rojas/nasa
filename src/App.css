@@ -181,6 +181,11 @@ img {
         grid-column: 1/-1;
     }
 
+    .spinner {
+        box-shadow: none;
+        width: 75px;
+    }
+
 }
 /* end mobile */
 
@@ -387,6 +392,11 @@ img {
         /* in marsDiv */
         grid-row: 2/3;
         grid-column: 1/-1;
+    }
+
+    .spinner {
+        box-shadow: none;
+        width: 75px;
     }
 
 }

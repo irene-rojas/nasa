@@ -7,6 +7,7 @@ import NearEarth from "./components/NearEarth/NearEarth";
 import ImageSearch from "./components/ImageSearch/ImageSearch";
 import Mars from "./components/Mars/Mars";
 import nasaLogo from "./nasa_logo.png";
+import spinning from "./spinning.gif";
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
     const [maxSol, setMaxSol] = useState("");
     const [camera, setCamera] = useState("");
     const [marsError, setMarsError] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     // API calls
     useEffect(() => {
@@ -80,6 +82,7 @@ function App() {
 
     // mars photos
     const marsSearch = () => {
+        setLoading(true);
         axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`)
         .then(res => {
             setMarsPhotos(res.data.photos.slice(0,24));
@@ -87,7 +90,9 @@ function App() {
             if (!marsPhotos.length > 0) {
                 setMarsError(true);
             }
-        });
+        }).then(() => {
+            setLoading(false);
+        })
     };
 
     function findMaxSol() {
@@ -250,7 +255,7 @@ function App() {
                                     <option>Select a camera</option>
                                     <option value="FHAZ">Front Hazard Avoidance Camera</option>
                                     <option value="RHAZ">Rear Hazard Avoidance Camera</option>
-                                    <option value="MAST">Mast Camera (Takes time to load)</option>
+                                    <option value="MAST">Mast Camera</option>
                                     <option value="CHEMCAM">Chemistry and Camera Complex</option>
                                     <option value="NAVCAM">Navigation Camera</option>
                             </select>
@@ -318,10 +323,13 @@ function App() {
                         No data available for that sol date. Please enter another sol date.
                     </div>
                 }
+                <br/>
+                {loading === true && <img className="spinner" src={spinning} alt="loading"/>}
 
             </div>
 
-            {marsPhotos.map((photo, index) => {
+            {loading === false &&
+            marsPhotos.map((photo, index) => {
                 return (
                         <Mars 
                             className={`mars${index}`}
