@@ -4,7 +4,7 @@ import "./ImageSearch.css";
 const ImageSearch = (props) => {
     return (
 
-        <div className="imageResultsDiv">
+        <figure className="imageResultsDiv">
             <strong>{props.title}</strong>
             <br/>
             <br/>
@@ -15,7 +15,7 @@ const ImageSearch = (props) => {
             Date created: {props.date}
             <br/>
             NASA ID: {props.id}
-        </div>
+        </figure>
 
     )
 }

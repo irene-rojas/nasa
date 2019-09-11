@@ -4,7 +4,7 @@ import "./PhotoDayVideo.css";
 const PhotoDayVideo = (props) => {
     return (
 
-        <div className="videoInfo">
+        <figure className="videoInfo">
             <br/>
             <iframe src={props.video}
                 frameBorder='0'
@@ -26,7 +26,7 @@ const PhotoDayVideo = (props) => {
             <a href="https://apod.nasa.gov/apod/astropix.html" target="_blank" rel="noopener noreferrer">Official NASA APOD Page</a>
             <br/>
             <a href="https://apod.nasa.gov/apod/archivepix.html" target="_blank" rel="noopener noreferrer">Archive</a>
-        </div>
+        </figure>
         
     )
 }
