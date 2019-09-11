@@ -107,7 +107,7 @@ function App() {
   return (
     <div className="App" id="top">
 
-        <div className="header">
+        <header className="header">
             <h1 className="masterTitle"><a href="#top">Exploring the NASA Open API Universe</a></h1>
             <div className="poweredBy">
                 <div className="poweredText">Powered by</div>
@@ -124,10 +124,10 @@ function App() {
                 <a href="#imageSearchDiv" id="imageNav">Image Search</a>
                 <a href="#marsDiv" id="marsNav">Mars Rover Image Search</a>
             </nav>
-        </div>
+        </header>
 
         {/* photo of day */}
-        <div className="photoDayDiv" id="photoDayDiv">
+        <section className="photoDayDiv" id="photoDayDiv">
             <h1 className="photoTitle">Astronomy Picture of the Day</h1>
 
 
@@ -150,15 +150,15 @@ function App() {
                 title={photoDay.title}
             />
             }
-        </div>
+        </section>
 
         {/* near earth objects */}
-        <div className="nearEarthDiv" id="nearEarthDiv">
+        <section className="nearEarthDiv" id="nearEarthDiv">
             <h1 className="neoTitle">Near-Earth Objects</h1>
 
             {neo.map((object, index) => {
                 return (
-                    <div className={`neoDiv${index}`} key={object.designation}>
+                    <figure className={`neoDiv${index}`} key={object.designation}>
                         <NearEarth 
                             key={object.designation}
                             name={object.name}
@@ -172,13 +172,13 @@ function App() {
                             firstDate={object.orbital_data.first_observation_date}
                             lastDate={object.orbital_data.last_observation_date}
                         />
-                    </div>
+                    </figure>
                 )
             })}
-        </div>
+        </section>
 
         {/* image search */}
-        <div className="imageSearchDiv" id="imageSearchDiv">
+        <section className="imageSearchDiv" id="imageSearchDiv">
             <h1 className="searchTitle">Search the NASA Image Archive</h1>
 
             <form 
@@ -212,10 +212,10 @@ function App() {
                 )
             })}
 
-        </div>
+        </section>
 
         {/* mars search */}
-        <div className="marsDiv" id="marsDiv">
+        <section className="marsDiv" id="marsDiv">
             <h1 className="marsTitle">Mars Rover Image Search</h1>
 
             <div className="marsForm">
@@ -344,7 +344,7 @@ function App() {
                 })
             }
 
-        </div>
+        </section>
 
     </div>
   );
