@@ -4,7 +4,7 @@ import "./Mars.css";
 const Mars = (props) => {
     return (
 
-        <div className="marsInfo">
+        <figure className="marsInfo">
             <img className="marsPhoto" src={props.img} alt={props.id}/>
             <br/>
             Rover: {props.rover}
@@ -14,7 +14,7 @@ const Mars = (props) => {
             Sol: {props.sol}
             <br/>
             Camera: {props.camera}
-        </div>
+        </figure>
 
     )
 }
