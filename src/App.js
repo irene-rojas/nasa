@@ -188,6 +188,7 @@ function App() {
                 event.preventDefault();
                 imageSearch();}}>
                 <input 
+                    title="Image Search"
                     value={query}
                     onChange={event => {
                         event.preventDefault();
@@ -227,6 +228,7 @@ function App() {
 
                     <div>
                         <select 
+                            title="Select Rover"
                             className="roverDropdown" 
                             value={rover}
                             onChange={event => {
@@ -244,6 +246,7 @@ function App() {
                     {rover === "curiosity" &&
                         <div>
                             <select 
+                                title="Select Camera"
                                 className="cameraDropdown" 
                                 id="curiosityCameras"
                                 value={camera}
@@ -265,6 +268,7 @@ function App() {
                     {rover === "opportunity" &&
                         <div>
                             <select 
+                                title="Select Camera"
                                 className="cameraDropdown" 
                                 id="opportunityCameras"
                                 value={camera}
@@ -283,6 +287,7 @@ function App() {
                     {rover === "spirit" &&
                         <div>
                             <select 
+                                title="Select Camera"
                                 className="cameraDropdown" 
                                 id="spiritCameras"
                                 value={camera}
@@ -303,6 +308,7 @@ function App() {
                         Enter sol (Mars mission date) between 0 and {maxSol}:
                         <br/>
                         <input 
+                            title="Enter sol date"
                             type="text"
                             onChange={event => {
                             event.preventDefault();
