@@ -180,7 +180,6 @@ function App() {
         {/* image search */}
         <section className="imageSearchDiv" id="imageSearchDiv">
             <h1 className="searchTitle">Search the NASA Image Archive</h1>
-            <p>Enter a search term. Returns 6 results if available.</p>
 
             <form 
                 className="imageSearchForm"
@@ -197,6 +196,7 @@ function App() {
                 /> 
                 <button>Search</button>
                 <br/>
+                Returns 6 results if available
             </form>
 
             {query &&
