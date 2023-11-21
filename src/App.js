@@ -3,7 +3,7 @@ import './App.css';
 import axios from 'axios';
 import PhotoDayPhoto from "./components/PhotoDayPhoto/PhotoDayPhoto";
 import PhotoDayVideo from "./components/PhotoDayVideo/PhotoDayVideo";
-import NearEarth from "./components/NearEarth/NearEarth";
+// import NearEarth from "./components/NearEarth/NearEarth";
 import ImageSearch from "./components/ImageSearch/ImageSearch";
 import Mars from "./components/Mars/Mars";
 import nasaLogo from "./nasa_logo.png";
@@ -14,7 +14,7 @@ function App() {
     // photo of day
     const [photoDay, setPhotoDay] = useState([]);
     // near earth objects
-    const [neo, setNeo] = useState([]);
+    // const [neo, setNeo] = useState([]);
     // image search
     const [query, setQuery] = useState("");
     const [data, setData] = useState([
@@ -44,12 +44,12 @@ function App() {
             // console.log(res.data);
         });
         // near-earth objects
-        axios.get(`https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${process.env.REACT_APP_NASA_API}`)
-        .then(res => {
-            // only save first 3 items in array
-            setNeo(res.data.near_earth_objects.slice(0,3));
-            // console.log(res.data.near_earth_objects.slice(0,3));
-        });
+        // axios.get(`https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${process.env.REACT_APP_NASA_API}`)
+        // .then(res => {
+        //     // only save first 3 items in array
+        //     setNeo(res.data.near_earth_objects.slice(0,3));
+        //     // console.log(res.data.near_earth_objects.slice(0,3));
+        // });
     }, []);
     // [] tells it to run just once
 
