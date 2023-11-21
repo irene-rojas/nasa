@@ -4,12 +4,12 @@ body {
 
 a:link {
     text-decoration: none;
-    color: white;
+    /* color: white; */
 }
 
 a:visited {
     text-decoration: none;
-    color: white;
+    /* color: white; */
 }
 
 img {
