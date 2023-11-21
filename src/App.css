@@ -29,10 +29,10 @@ img {
         text-align: center;
         height: 100vh;
         display: grid;
-        grid-template-rows: 140px repeat(4, 1fr);
+        grid-template-rows: 140px repeat(3, 1fr);
         /* 140px = header */
         /* 1fr = photoDayDiv */
-        /* 1fr = nearEarthDiv */
+        /* 1fr = nearEarthDiv - commented out */
         /* 1fr = imageSearchDiv */
         /* 1fr = marsDiv */
         grid-template-columns: 20px 1fr 20px;
@@ -271,7 +271,7 @@ img {
         /* in navbar */
         display: grid;
         grid-template-rows: auto;
-        grid-template-columns: repeat(6, auto);
+        grid-template-columns: repeat(5, auto);
         padding: 10px 0px 5px 0px;
     }
 
@@ -280,19 +280,19 @@ img {
         grid-column: 2/3;
     }
 
-    #neoNav {
+    /* #neoNav {
+        grid-row: 1/2;
+        grid-column: 3/4;
+    } */
+
+    #imageNav {
         grid-row: 1/2;
         grid-column: 3/4;
     }
 
-    #imageNav {
-        grid-row: 1/2;
-        grid-column: 4/5;
-    }
-
     #marsNav {
         grid-row: 1/2;
-        grid-column: 5/6;
+        grid-column: 4/5;
     }
 
     /* ---- */

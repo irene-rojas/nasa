@@ -120,7 +120,7 @@ function App() {
             </div>
             <nav className="navbar">
                 <a href="#photoDayDiv" id="apodNav">Astronomy Picture of the Day</a>
-                <a href="#nearEarthDiv" id="neoNav">Near-Earth Objects</a>
+                {/* <a href="#nearEarthDiv" id="neoNav">Near-Earth Objects</a> */}
                 <a href="#imageSearchDiv" id="imageNav">Image Search</a>
                 <a href="#marsDiv" id="marsNav">Mars Rover Image Search</a>
             </nav>
@@ -153,7 +153,7 @@ function App() {
         </section>
 
         {/* near earth objects */}
-        <section className="nearEarthDiv" id="nearEarthDiv">
+        {/* <section className="nearEarthDiv" id="nearEarthDiv">
             <h1 className="neoTitle">Near-Earth Objects</h1>
 
             {neo.map((object, index) => {
@@ -175,7 +175,7 @@ function App() {
                     </figure>
                 )
             })}
-        </section>
+        </section> */}
 
         {/* image search */}
         <section className="imageSearchDiv" id="imageSearchDiv">
