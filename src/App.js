@@ -108,7 +108,7 @@ function App() {
     <div className="App" id="top">
 
         <header className="header">
-            <h1 className="masterTitle"><a href="#top">Exploring the NASA Open API Universe</a></h1>
+            <h1 className="masterTitle"><a href="#top" style={{color: "white"}}>Exploring the NASA Open API Universe</a></h1>
             <div className="poweredBy">
                 <div className="poweredText">Powered by</div>
                 
@@ -119,10 +119,10 @@ function App() {
                 </div>
             </div>
             <nav className="navbar">
-                <a href="#photoDayDiv" id="apodNav">Astronomy Picture of the Day</a>
+                <a href="#photoDayDiv" id="apodNav" style={{color: "white"}}>Astronomy Picture of the Day</a>
                 {/* <a href="#nearEarthDiv" id="neoNav">Near-Earth Objects</a> */}
-                <a href="#imageSearchDiv" id="imageNav">Image Search</a>
-                <a href="#marsDiv" id="marsNav">Mars Rover Image Search</a>
+                <a href="#imageSearchDiv" id="imageNav" style={{color: "white"}}>Image Search</a>
+                <a href="#marsDiv" id="marsNav" style={{color: "white"}}>Mars Rover Image Search</a>
             </nav>
         </header>
 
