@@ -108,9 +108,9 @@ function App() {
     <div className="App" id="top">
 
         <header className="header">
-            <h1 className="masterTitle"><a href="#top">Exploring the NASA Open API Universe</a></h1>
+            <h1 className="masterTitle"><a href="#top" style={{color: 'white'}}>Exploring the NASA Open API Universe</a></h1>
             <div className="poweredBy">
-                <div className="poweredText">Powered by</div>
+                <div className="poweredText" style={{color: 'white'}}>Powered by</div>
                 
                 <div className="logoDiv">
                     <a href="https://api.nasa.gov/index.html" target="_blank" rel="noopener noreferrer">
@@ -119,10 +119,10 @@ function App() {
                 </div>
             </div>
             <nav className="navbar">
-                <a href="#photoDayDiv" id="apodNav">Astronomy Picture of the Day</a>
-                <a href="#nearEarthDiv" id="neoNav">Near-Earth Objects</a>
-                <a href="#imageSearchDiv" id="imageNav">Image Search</a>
-                <a href="#marsDiv" id="marsNav">Mars Rover Image Search</a>
+                <a href="#photoDayDiv" id="apodNav" style={{color: 'white'}}>Astronomy Picture of the Day</a>
+                <a href="#nearEarthDiv" id="neoNav" style={{color: 'white'}}>Near-Earth Objects</a>
+                <a href="#imageSearchDiv" id="imageNav" style={{color: 'white'}}>Image Search</a>
+                <a href="#marsDiv" id="marsNav" style={{color: 'white'}}>Mars Rover Image Search</a>
             </nav>
         </header>
 
@@ -180,7 +180,6 @@ function App() {
         {/* image search */}
         <section className="imageSearchDiv" id="imageSearchDiv">
             <h1 className="searchTitle">Search the NASA Image Archive</h1>
-            <p>Enter a search term. Returns 6 results if available.</p>
 
             <form 
                 className="imageSearchForm"
@@ -188,6 +187,7 @@ function App() {
                 event.preventDefault();
                 imageSearch();}}>
                 <input 
+                    title="Image Search"
                     value={query}
                     onChange={event => {
                         event.preventDefault();
@@ -196,6 +196,7 @@ function App() {
                 /> 
                 <button>Search</button>
                 <br/>
+                Returns 6 results if available
             </form>
 
             {query &&
@@ -227,6 +228,7 @@ function App() {
 
                     <div>
                         <select 
+                            title="Select Rover"
                             className="roverDropdown" 
                             value={rover}
                             onChange={event => {
@@ -244,6 +246,7 @@ function App() {
                     {rover === "curiosity" &&
                         <div>
                             <select 
+                                title="Select Camera"
                                 className="cameraDropdown" 
                                 id="curiosityCameras"
                                 value={camera}
@@ -265,6 +268,7 @@ function App() {
                     {rover === "opportunity" &&
                         <div>
                             <select 
+                                title="Select Camera"
                                 className="cameraDropdown" 
                                 id="opportunityCameras"
                                 value={camera}
@@ -283,6 +287,7 @@ function App() {
                     {rover === "spirit" &&
                         <div>
                             <select 
+                                title="Select Camera"
                                 className="cameraDropdown" 
                                 id="spiritCameras"
                                 value={camera}
@@ -303,6 +308,7 @@ function App() {
                         Enter sol (Mars mission date) between 0 and {maxSol}:
                         <br/>
                         <input 
+                            title="Enter sol date"
                             type="text"
                             onChange={event => {
                             event.preventDefault();
