@@ -30,7 +30,7 @@ const NearEarth = (props) => {
             Last observed: {props.lastDate}
             <br/>
             <br/>
-            <a href={props.jplUrl} target="_blank" rel="noopener noreferrer">Learn More about {props.name}</a>
+            JPL URL: <a href={props.jplUrl} target="_blank" rel="noopener noreferrer">{props.jplUrl}</a>
         </figure>
         
     )

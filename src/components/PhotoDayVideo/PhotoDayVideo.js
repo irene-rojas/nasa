@@ -25,7 +25,7 @@ const PhotoDayVideo = (props) => {
             <br/>
             <a href="https://apod.nasa.gov/apod/astropix.html" target="_blank" rel="noopener noreferrer">Official NASA APOD Page</a>
             <br/>
-            <a href="https://apod.nasa.gov/apod/archivepix.html" target="_blank" rel="noopener noreferrer">APOD Archive</a>
+            <a href="https://apod.nasa.gov/apod/archivepix.html" target="_blank" rel="noopener noreferrer">Archive</a>
         </figure>
         
     )
