@@ -122,7 +122,7 @@ function App() {
                 <a href="#photoDayDiv" id="apodNav" style={{color: "white"}}>Astronomy Picture of the Day</a>
                 {/* <a href="#nearEarthDiv" id="neoNav">Near-Earth Objects</a> */}
                 <a href="#imageSearchDiv" id="imageNav" style={{color: "white"}}>Image Search</a>
-                <a href="#marsDiv" id="marsNav" style={{color: "white"}}>Mars Rover Image Search</a>
+                {/* <a href="#marsDiv" id="marsNav" style={{color: "white"}}>Mars Rover Image Search</a> */}
             </nav>
         </header>
 
