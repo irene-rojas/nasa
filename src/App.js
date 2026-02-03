@@ -5,9 +5,9 @@ import PhotoDayPhoto from "./components/PhotoDayPhoto/PhotoDayPhoto";
 import PhotoDayVideo from "./components/PhotoDayVideo/PhotoDayVideo";
 // import NearEarth from "./components/NearEarth/NearEarth";
 import ImageSearch from "./components/ImageSearch/ImageSearch";
-import Mars from "./components/Mars/Mars";
+// import Mars from "./components/Mars/Mars";
 import nasaLogo from "./nasa_logo.png";
-import spinning from "./spinning.gif";
+// import spinning from "./spinning.gif";
 
 function App() {
 
@@ -26,14 +26,14 @@ function App() {
             "src": ""
         }
     ]);
-    // mars photos
-    const [marsPhotos, setMarsPhotos] = useState([]);
-    const [rover, setRover] = useState("");
-    const [sol, setSol] = useState("");
-    const [maxSol, setMaxSol] = useState("");
-    const [camera, setCamera] = useState("");
-    const [marsError, setMarsError] = useState(false);
-    const [loading, setLoading] = useState(false);
+    // mars photos Update: Mars Rover API was removed in late 2025
+    // const [marsPhotos, setMarsPhotos] = useState([]);
+    // const [rover, setRover] = useState("");
+    // const [sol, setSol] = useState("");
+    // const [maxSol, setMaxSol] = useState("");
+    // const [camera, setCamera] = useState("");
+    // const [marsError, setMarsError] = useState(false);
+    // const [loading, setLoading] = useState(false);
 
     // API calls
     useEffect(() => {
@@ -81,27 +81,27 @@ function App() {
     }
 
     // mars photos
-    const marsSearch = () => {
-        setLoading(true);
-        axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`)
-        .then(res => {
-            setMarsPhotos(res.data.photos.slice(0,24));
-            // console.log(res.data.photos.slice(0,24));
-            if (!marsPhotos.length > 0) {
-                setMarsError(true);
-            }
-        }).then(() => {
-            setLoading(false);
-        })
-    };
+    // const marsSearch = () => {
+    //     setLoading(true);
+    //     axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${process.env.REACT_APP_NASA_API}`)
+    //     .then(res => {
+    //         setMarsPhotos(res.data.photos.slice(0,24));
+    //         // console.log(res.data.photos.slice(0,24));
+    //         if (!marsPhotos.length > 0) {
+    //             setMarsError(true);
+    //         }
+    //     }).then(() => {
+    //         setLoading(false);
+    //     })
+    // };
 
-    function findMaxSol() {
-        axios.get(`https://api.nasa.gov/mars-photos/api/v1/manifests/${rover}?&api_key=${process.env.REACT_APP_NASA_API}`)
-        .then(res => {
-            setMaxSol(res.data.photo_manifest.max_sol);
-            // console.log(res.data.photo_manifest.max_sol);
-        })
-    }
+    // function findMaxSol() {
+    //     axios.get(`https://api.nasa.gov/mars-photos/api/v1/manifests/${rover}?&api_key=${process.env.REACT_APP_NASA_API}`)
+    //     .then(res => {
+    //         setMaxSol(res.data.photo_manifest.max_sol);
+    //         // console.log(res.data.photo_manifest.max_sol);
+    //     })
+    // }
 
 
   return (
@@ -216,7 +216,7 @@ function App() {
         </section>
 
         {/* mars search */}
-        <section className="marsDiv" id="marsDiv">
+        {/* <section className="marsDiv" id="marsDiv">
             <h1 className="marsTitle">Mars Rover Image Search</h1>
 
             <div className="marsForm">
@@ -350,7 +350,7 @@ function App() {
                 })
             }
 
-        </section>
+        </section> */}
 
     </div>
   );
