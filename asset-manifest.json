@@ -1,24 +1,23 @@
 {
   "files": {
-    "main.css": "/nasa/static/css/main.1c2aff41.chunk.css",
-    "main.js": "/nasa/static/js/main.7157a0a1.chunk.js",
-    "main.js.map": "/nasa/static/js/main.7157a0a1.chunk.js.map",
+    "main.css": "/nasa/static/css/main.c54b6a0d.chunk.css",
+    "main.js": "/nasa/static/js/main.ae497a9f.chunk.js",
+    "main.js.map": "/nasa/static/js/main.ae497a9f.chunk.js.map",
     "runtime-main.js": "/nasa/static/js/runtime-main.e6571954.js",
     "runtime-main.js.map": "/nasa/static/js/runtime-main.e6571954.js.map",
-    "static/js/2.fbb0da26.chunk.js": "/nasa/static/js/2.fbb0da26.chunk.js",
-    "static/js/2.fbb0da26.chunk.js.map": "/nasa/static/js/2.fbb0da26.chunk.js.map",
+    "static/js/2.cb69216d.chunk.js": "/nasa/static/js/2.cb69216d.chunk.js",
+    "static/js/2.cb69216d.chunk.js.map": "/nasa/static/js/2.cb69216d.chunk.js.map",
     "index.html": "/nasa/index.html",
-    "precache-manifest.7a52573eb0822a1e19c14d2576d96bc8.js": "/nasa/precache-manifest.7a52573eb0822a1e19c14d2576d96bc8.js",
+    "precache-manifest.e0acd8a5b3f000c6e8c63fe5fa240da9.js": "/nasa/precache-manifest.e0acd8a5b3f000c6e8c63fe5fa240da9.js",
     "service-worker.js": "/nasa/service-worker.js",
-    "static/css/main.1c2aff41.chunk.css.map": "/nasa/static/css/main.1c2aff41.chunk.css.map",
-    "static/js/2.fbb0da26.chunk.js.LICENSE.txt": "/nasa/static/js/2.fbb0da26.chunk.js.LICENSE.txt",
-    "static/media/nasa_logo.png": "/nasa/static/media/nasa_logo.b44f0cfe.png",
-    "static/media/spinning.gif": "/nasa/static/media/spinning.bea2d77d.gif"
+    "static/css/main.c54b6a0d.chunk.css.map": "/nasa/static/css/main.c54b6a0d.chunk.css.map",
+    "static/js/2.cb69216d.chunk.js.LICENSE.txt": "/nasa/static/js/2.cb69216d.chunk.js.LICENSE.txt",
+    "static/media/nasa_logo.png": "/nasa/static/media/nasa_logo.b44f0cfe.png"
   },
   "entrypoints": [
     "static/js/runtime-main.e6571954.js",
-    "static/js/2.fbb0da26.chunk.js",
-    "static/css/main.1c2aff41.chunk.css",
-    "static/js/main.7157a0a1.chunk.js"
+    "static/js/2.cb69216d.chunk.js",
+    "static/css/main.c54b6a0d.chunk.css",
+    "static/js/main.ae497a9f.chunk.js"
   ]
 }
